@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathFight</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="brand-title">MathFight</h1>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-button">Inicio</button>
+                <button class="nav-button">Combate</button>
+                <button class="nav-button">Ranking</button>
+                <button class="nav-button">Entrenar</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Content will be added here later -->
+    </main>
+
+    <!-- Modal de bienvenida -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="Imagen de bienvenida">
+            </div>
+            <div class="modal-controls">
+                <div id="buttonContainer" class="button-container">
+                    <!-- Los botones se generarán dinámicamente -->
+                </div>
+                <div id="inputContainer" class="input-container" style="display: none;">
+                    <input type="text" id="nameInput" placeholder="Ingresa tu nombre" maxlength="20">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 MathFight. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variable global para almacenar el nombre del usuario
+        let userName = '';
+
+        // Configuración de las imágenes y botones del modal
+        const modalSteps = [
+            {
+                image: 'img/welcome/harpix_welcome.png',
+                buttonText: 'Siguiente',
+                buttonAction: 'next'
+            },
+            {
+                image: 'img/welcome/harpix_expli.png',
+                buttonText: 'Siguiente',
+                buttonAction: 'next'
+            },
+            {
+                image: 'img/welcome/harpix_intro.png',
+                buttonText: 'Siguiente',
+                buttonAction: 'next'
+            },
+            {
+                image: 'img/welcome/harpix_nameq.png',
+                buttonText: 'Registrar',
+                buttonAction: 'register',
+                showInput: true
+            },
+            {
+                image: 'img/welcome/harpix_gradesel.png',
+                buttonText: 'Seleccionar Grado',
+                buttonAction: 'showGrades',
+                showGrades: true
+            }
+        ];
+
+        let currentStep = 0;
+
+        // Función para mostrar el modal
+        function showModal() {
+            document.getElementById('welcomeModal').style.display = 'flex';
+            updateModalContent();
+        }
+
+        // Función para actualizar el contenido del modal
+        function updateModalContent() {
+            const step = modalSteps[currentStep];
+            const modalImage = document.getElementById('modalImage');
+            const buttonContainer = document.getElementById('buttonContainer');
+            const inputContainer = document.getElementById('inputContainer');
+
+            // Animación de transición de imagen
+            modalImage.style.opacity = '0';
+            modalImage.style.transform = 'scale(0.8) rotateY(15deg)';
+            
+            setTimeout(() => {
+                modalImage.src = step.image;
+                modalImage.style.opacity = '1';
+                modalImage.style.transform = 'scale(1) rotateY(0deg)';
+            }, 200);
+
+            // Limpiar contenedores con animación
+            buttonContainer.style.opacity = '0';
+            buttonContainer.style.transform = 'translateY(20px)';
+            inputContainer.style.display = 'none';
+            
+            // Limpiar completamente el contenido anterior
+            buttonContainer.innerHTML = '';
+
+            if (step.showInput) {
+                // Mostrar input para nombre con animación
+                setTimeout(() => {
+                    inputContainer.style.display = 'flex';
+                    inputContainer.style.opacity = '0';
+                    inputContainer.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        inputContainer.style.opacity = '1';
+                        inputContainer.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 300);
+                
+                const nameInput = document.getElementById('nameInput');
+                nameInput.value = '';
+            }
+
+            if (step.showGrades) {
+                // Mostrar botones de grados con animación escalonada
+                setTimeout(() => {
+                    const gradeButtons = document.createElement('div');
+                    gradeButtons.className = 'grade-buttons';
+                    
+                    for (let i = 1; i <= 6; i++) {
+                        const button = document.createElement('button');
+                        button.className = 'grade-button';
+                        button.textContent = `Grado ${i}`;
+                        button.onclick = () => handleGradeClick(i);
+                        button.style.animationDelay = `${i * 0.1}s`;
+                        gradeButtons.appendChild(button);
+                    }
+                    
+                    buttonContainer.appendChild(gradeButtons);
+                    
+                    setTimeout(() => {
+                        buttonContainer.style.opacity = '1';
+                        buttonContainer.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 300);
+            } else {
+                // Mostrar botón "Siguiente" con animación
+                setTimeout(() => {
+                    const button = document.createElement('button');
+                    button.className = 'modal-button';
+                    button.textContent = 'Siguiente';
+                    button.onclick = handleButtonClick;
+                    buttonContainer.appendChild(button);
+                    
+                    setTimeout(() => {
+                        buttonContainer.style.opacity = '1';
+                        buttonContainer.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 300);
+            }
+        }
+
+        // Función para manejar clics en botones
+        function handleButtonClick() {
+            const step = modalSteps[currentStep];
+            
+            if (step.buttonAction === 'next') {
+                currentStep++;
+                if (currentStep < modalSteps.length) {
+                    updateModalContent();
+                } else {
+                    closeModal();
+                }
+            } else if (step.buttonAction === 'register') {
+                const nameInput = document.getElementById('nameInput');
+                userName = nameInput.value.trim();
+                
+                if (userName) {
+                    currentStep++;
+                    updateModalContent();
+                } else {
+                    alert('Por favor, ingresa tu nombre');
+                }
+            }
+        }
+
+        // Función para manejar clics en botones de grado
+        function handleGradeClick(grade) {
+            // Ocultar todos los botones de grado
+            const gradeButtons = document.querySelectorAll('.grade-button');
+            gradeButtons.forEach(button => {
+                button.style.opacity = '0';
+                button.style.transform = 'scale(0.8)';
+            });
+            
+            // Navegar después de la animación
+            setTimeout(() => {
+                goToGrade(grade);
+            }, 300);
+        }
+
+        // Función para ir a un grado específico con animación
+        function goToGrade(grade) {
+            // Animación de salida
+            const modal = document.getElementById('welcomeModal');
+            modal.style.animation = 'modalFadeOut 0.5s ease-in forwards';
+            
+            setTimeout(() => {
+                window.location.href = `${grade}_grado.html`;
+            }, 500);
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            document.getElementById('welcomeModal').style.display = 'none';
+        }
+
+        // Mostrar el modal cuando se carga la página
+        window.addEventListener('load', showModal);
+    </script>
+</body>
+</html>
