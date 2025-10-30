@@ -31,5 +31,29 @@
             <p>&copy; 2024 MathFight. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <div class="modal-image">
+                <img src="img/coaches welcome/grado 3/tuga_welcome.png" alt="Coach Bienvenida Grado 3">
+            </div>
+            <div class="modal-controls">
+                <div class="button-container">
+                    <button class="modal-button" id="nextButton">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var modal = document.getElementById('welcomeModal');
+            var nextBtn = document.getElementById('nextButton');
+            nextBtn.addEventListener('click', function () {
+                modal.style.animation = 'modalFadeOut 0.4s forwards';
+                setTimeout(function(){ modal.style.display = 'none'; }, 400);
+            });
+        })();
+    </script>
 </body>
 </html>
