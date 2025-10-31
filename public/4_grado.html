@@ -14,10 +14,10 @@
                 <h1 class="brand-title">MathFight</h1>
             </div>
             <div class="nav-menu">
-                <button class="nav-button">Inicio</button>
-                <button class="nav-button">Combate</button>
-                <button class="nav-button">Ranking</button>
-                <button class="nav-button">Entrenar</button>
+                <a class="nav-button" href="mainpage.html">Inicio</a>
+                <a class="nav-button" href="coaches.html">Entrenadores</a>
+                <a class="nav-button" href="ranking.html">Ranking</a>
+                <a class="nav-button" href="legends.html">Leyendas</a>
             </div>
         </div>
     </nav>
@@ -28,14 +28,19 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 MathFight. Todos los derechos reservados.</p>
+            <p>&copy; 2025 MathFight. Todos los derechos reservados. · Desarrollado por GeorgeGGdev</p>
+            <div class="footer-links">
+                <a href="coaches.html">Conoce a tus entrenadores</a>
+                <a href="ranking.html">Mira el ranking</a>
+                <a href="index.html">Salir</a>
+            </div>
         </div>
     </footer>
 
     <div class="modal" id="welcomeModal">
         <div class="modal-content">
             <div class="modal-image">
-                <img src="img/coaches welcome/grado 4/laze_welcome.png" alt="Coach Bienvenida Grado 4">
+                <img id="modalImage" src="img/coaches welcome/grado 4/laze_welcome.png" alt="Coach Bienvenida Grado 4">
             </div>
             <div class="modal-controls">
                 <div class="button-container">
@@ -46,14 +51,36 @@
     </div>
 
     <script>
-        (function () {
-            var modal = document.getElementById('welcomeModal');
-            var nextBtn = document.getElementById('nextButton');
-            nextBtn.addEventListener('click', function () {
-                modal.style.animation = 'modalFadeOut 0.4s forwards';
-                setTimeout(function(){ modal.style.display = 'none'; }, 400);
-            });
-        })();
+        const modalSteps = [
+  {
+    image: 'img/coaches welcome/grado 4/laze_welcome.png',
+  },
+  {
+    image: 'img/coaches welcome/grado 4/laze_exp.png',
+  }
+];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('welcomeModal');
+  const modalImage = document.getElementById('modalImage');
+  const nextBtn = document.getElementById('nextButton');
+
+  let currentStep = 0;
+  modalImage.src = modalSteps[currentStep].image;
+
+  nextBtn.addEventListener('click', () => {
+    currentStep++;
+
+    if (currentStep < modalSteps.length) {
+      // Cambia a la siguiente imagen
+      modalImage.src = modalSteps[currentStep].image;
+    } else {
+      // Cierra el modal con animación
+      modal.style.animation = 'modalFadeOut 0.4s forwards';
+      setTimeout(() => modal.style.display = 'none', 400);
+    }
+  });
+});
     </script>
 </body>
 </html>

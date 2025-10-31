@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathFight - Ranking</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        .ranking-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: linear-gradient(180deg, #222 0%, #2b2b2b 100%);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            overflow: hidden;
+            border: 2px solid #3a3d3c;
+            position: relative;
+        }
+        .ranking-header {
+            background: linear-gradient(90deg, #CC2936, #9b1d27);
+            color: #fff;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ranking-header h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+        .ring-strap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: repeating-linear-gradient(180deg, #CC2936 0 18px, #111 18px 36px);
+            opacity: 0.3;
+        }
+        table.ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #eee;
+        }
+        table.ranking-table thead th {
+            text-align: left;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            color: #ffd24a;
+            background: #3a3d3c;
+            padding: 14px 18px;
+            border-bottom: 2px solid #CC2936;
+        }
+        table.ranking-table tbody tr {
+            background: #262626;
+        }
+        table.ranking-table tbody tr:nth-child(even) {
+            background: #2e2e2e;
+        }
+        table.ranking-table tbody tr:hover {
+            background: #333;
+        }
+        table.ranking-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #3a3d3c;
+            font-family: 'Fredoka', sans-serif;
+            vertical-align: middle;
+        }
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .rank-1 { background: linear-gradient(135deg, #ffd24a, #ffb833); color: #111; }
+        .rank-2 { background: linear-gradient(135deg, #b0b0b0, #9a9a9a); }
+        .rank-3 { background: linear-gradient(135deg, #cd7f32, #b56a1f); }
+        .rank-default { background: #4c4f4e; }
+        .name-cell { font-weight: 600; color: #fff; }
+        .medals-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffd24a;
+            font-weight: 700;
+        }
+        .medal-icon { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="brand-title">MathFight</h1>
+            </div>
+            <div class="nav-menu">
+                <a class="nav-button" href="mainpage.html">Inicio</a>
+                <a class="nav-button" href="coaches.html">Entrenadores</a>
+                <a class="nav-button" href="ranking.html">Ranking</a>
+                <a class="nav-button" href="legends.html">Leyendas</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="ranking-container">
+            <div class="ranking-header">
+                <span>🥊</span>
+                <h2>Tabla de Ranking</h2>
+            </div>
+            <div class="ring-strap"></div>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Medallas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge rank-1">1</span></td>
+                        <td class="name-cell">Harpix</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 30</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-2">2</span></td>
+                        <td class="name-cell">Jagro</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 23</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-3">3</span></td>
+                        <td class="name-cell">Laze</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 19</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-default">4</span></td>
+                        <td class="name-cell">Tuga</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 17</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-default">5</span></td>
+                        <td class="name-cell">Goldie</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 15</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge rank-default">6</span></td>
+                        <td class="name-cell">Oli</td>
+                        <td class="medals-cell"><span class="medal-icon">🥇</span> 13</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MathFight. Todos los derechos reservados. · Desarrollado por GeorgeGGdev</p>
+            <div class="footer-links">
+                <a href="coaches.html">Conoce a tus entrenadores</a>
+                <a href="ranking.html">Mira el ranking</a>
+                <a href="index.html">Salir</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
