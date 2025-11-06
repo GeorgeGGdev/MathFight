@@ -6,6 +6,58 @@
     <title>MathFight - Leyendas</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --lx-ink:#0b0e1a; --lx-card:#12172b; --lx-soft:#1a2140; --lx-red:#ff3b3b; --lx-gold:#ffd23f; --lx-blue:#2ec5ff; --lx-white:#ffffff;
+    }
+    body{ background: radial-gradient(1200px 800px at 50% -200px, #0e1326 0%, #090c1c 50%, #070913 100%); color:#e7eeff; }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 32px 20px 64px; }
+    .title{ font-family:"Fredoka One"; font-size: clamp(28px,4.4vw,50px); margin: 8px 0 4px; background: linear-gradient(90deg, #e9eefc, #ffd23f, #ff3b3b); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .sub{ font-family:"Fredoka"; color:#a8b6d9; margin-bottom: 18px; }
+
+    .legend-grid{ display:grid; grid-template-columns: 1fr; gap: 22px; }
+    .legend-card{
+        position: relative; border-radius: 20px; overflow: hidden; cursor: pointer;
+        background: linear-gradient(180deg, var(--lx-card), var(--lx-soft));
+        border: 1px solid rgba(255,210,63,.18);
+        box-shadow: 0 18px 44px rgba(0,0,0,.35), 0 0 0 2px rgba(255,210,63,.08) inset, 0 0 32px rgba(255,210,63,.06) inset;
+        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+    .legend-card:hover{ transform: translateY(-6px); filter: saturate(1.05); box-shadow: 0 22px 56px rgba(0,0,0,.45), 0 0 0 2px rgba(255,255,255,.04) inset; }
+
+    .lx-head{ display:grid; grid-template-columns: 1.2fr .8fr; align-items:center; gap:18px; padding: 20px; }
+    .lx-name{ font-family:"Fredoka One"; font-size: clamp(26px,3.6vw,38px); margin: 0; }
+    .lx-sub{ font-family:"Fredoka"; color:#c2cff3; font-weight:700; margin-top: 6px; }
+    .lx-chips{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px; }
+    .lx-chip{ padding:8px 12px; border-radius:999px; font-weight:700; font-family:"Fredoka"; font-size:13px; border:1px solid rgba(255,210,63,.35); background: linear-gradient(180deg, rgba(255,210,63,.18), rgba(255,210,63,.08)); color:#ffeaa0; }
+    .belt{ color:#0b0e1a; background: linear-gradient(180deg,#ffe98a,#ffcc3d); border:0; box-shadow: 0 6px 16px rgba(255,210,63,.45); }
+
+    .lx-portrait{ width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 14px; box-shadow: 0 14px 28px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.08); }
+
+    .lx-body{ padding: 0 20px 20px; }
+    .lx-acc{ height:0; overflow:hidden; opacity:0; transition: height .45s ease, opacity .25s ease; border-top: 1px dashed rgba(255,255,255,.12); margin-top: 10px; }
+    .legend-card.open .lx-acc{ opacity:1; }
+    .lx-intro{ display:flex; gap:16px; flex-wrap:wrap; margin: 14px 0 10px; }
+    .lx-intro p{ margin:0; line-height:1.7; color:#cbd6fb; font-family:"Fredoka"; }
+
+    .lx-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .lx-block{ background: linear-gradient(180deg, rgba(255,210,63,.12), rgba(255,210,63,.06)); border:1px solid rgba(255,210,63,.28); border-radius: 14px; padding: 12px 14px; box-shadow: 0 8px 18px rgba(0,0,0,.28), 0 0 24px rgba(255,210,63,.05) inset; }
+    .lx-block h4{ font-family:"Fredoka One"; margin: 4px 0 6px; font-size: 18px; color:#fff; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
+    .lx-block p{ margin:0; color:#f3f5ff; font-family:"Fredoka"; line-height:1.7; }
+    @media (max-width: 760px){ .lx-grid{ grid-template-columns: 1fr; } }
+
+    .tagline{ font-family:"Fredoka"; color:#0b0e1a; font-weight:800; text-transform: uppercase; letter-spacing:.6px; padding: 12px 18px; background: linear-gradient(180deg,#ffe98a,#ffcc3d); border-radius: 14px; box-shadow: 0 10px 28px rgba(255,210,63,.35); display:inline-block; }
+
+    .chev{ position:absolute; right:16px; top:16px; width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; font-size:18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 4px 10px rgba(0,0,0,.3); transition: transform .3s ease; color:#fff; }
+    .legend-card.open .chev{ transform: rotate(180deg); }
+
+    .accent-red{ box-shadow: 0 0 0 3px rgba(255,59,59,.26) inset; }
+    .accent-gold{ box-shadow: 0 0 0 3px rgba(255,210,63,.26) inset; }
+    .accent-blue{ box-shadow: 0 0 0 3px rgba(46,197,255,.26) inset; }
+
+    .reveal{ opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -23,8 +75,221 @@
     </nav>
 
     <main class="main-content">
-        <!-- Leyendas - contenido por definir -->
+        <div class="wrap">
+            <h1 class="title">Hall of Fame Panameño</h1>
+            <p class="sub">Seis campeones que llevaron el boxeo panameño a lo más alto. Toca cada tarjeta para conocer sus logros, estilos y legado.</p>
+
+            <div class="legend-grid">
+                <!-- Roberto Durán -->
+                <article class="legend-card accent-gold reveal" data-delay="0">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Roberto Durán</h2>
+                            <div class="lx-sub">“Mano de Piedra” · 4 divisiones</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeón Mundial</span>
+                                <span class="lx-chip">Ligero</span>
+                                <span class="lx-chip">Wélter</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Roberto Durán" src="img/legends/robertoduran.jpg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Roberto Durán es sinónimo de garra y técnica. Su agresividad inteligente y su defensa interior marcaron una era. Desde los ligeros hasta los medianos, su nombre impuso respeto en cada ring, construyendo una de las carreras más admiradas de la historia del boxeo.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Campeón mundial en cuatro divisiones, reinados históricos en peso ligero, victorias memorables ante Sugar Ray Leonard y muchos más.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Presión constante, combinaciones al cuerpo, pasos cortos y cintura elástica. Capacidad para cortar el ring y forzar peleas de corto alcance.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>119 peleas, 103 victorias (70 KO), 16 derrotas. Carrera profesional desde 1968 hasta 2001.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Considerado uno de los mejores ligeros de todos los tiempos; símbolo de la identidad panameña y del boxeo latinoamericano.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 16/06/1951 · Debut profesional: 23/02/1968 (16 años) · Fallecimiento: —
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- Eusebio Pedroza -->
+                <article class="legend-card accent-blue reveal" data-delay="50">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Eusebio Pedroza</h2>
+                            <div class="lx-sub">Pluma · Reinado largo</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeón Mundial</span>
+                                <span class="lx-chip">Peso pluma</span>
+                                <span class="lx-chip">Defensas consecutivas</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Eusebio Pedroza" src="img/legends/eusebiopedroza.jpeg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Dueño de un jab educado y gran timing, Pedroza defendió el título mundial de peso pluma en numerosas ocasiones. Su inteligencia en el ring y condición física lo convirtieron en una referencia de consistencia y elegancia.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Campeón mundial AMB de peso pluma con un prolongado número de defensas exitosas a lo largo de los años 80.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Boxeador técnico: manejo de distancia, jab constante y recursos para amarrar y reiniciar cuando era necesario.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>Más de 40 victorias, destacando defensas titulares; reconocido por su durabilidad y orden táctico.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Uno de los grandes campeones pluma de la historia; ejemplo de profesionalismo y temple.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 02/03/1956 · Debut profesional: 02/09/1973 (17 años) · Fallecimiento: 01/03/2019 (cáncer de páncreas)
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- Hilario Zapata -->
+                <article class="legend-card accent-gold reveal" data-delay="100">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Hilario Zapata</h2>
+                            <div class="lx-sub">Mini mosca / Mosca ligero</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeón Mundial</span>
+                                <span class="lx-chip">Defensa y ángulos</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Hilario Zapata" src="img/legends/hilariozapata.jpg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Maestro del movimiento y el contragolpe. Zapata mostró un boxeo fino, basado en el desplazamiento y el cálculo, capaz de neutralizar rivales más fuertes con ritmo y precisión.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Campeonatos mundiales en divisiones pequeñas; victorias ante rivales de alto nivel en escenarios internacionales.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Movilidad, fintas y contraataques certeros. Gran lectura de las entradas del oponente.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>Más de 40 victorias profesionales con amplia experiencia en pleitos titulares.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Referente del boxeo técnico panameño en pesos chicos; inspiración para estilistas modernos.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 19/08/1958 · Debut profesional: 1977 (19 años) · Fallecimiento: —
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- Ricardo Córdoba -->
+                <article class="legend-card accent-blue reveal" data-delay="150">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Ricardo Córdoba</h2>
+                            <div class="lx-sub">Súper gallo</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeón Mundial</span>
+                                <span class="lx-chip">Súper gallo</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Ricardo Córdoba" src="img/legends/ricardocordoba.jpg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Disciplinado y con oficio, Córdoba construyó su camino a la faja mundial con técnica y sacrificio. Representó a Panamá con orgullo en escenarios exigentes.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Título mundial en peso súper gallo y defensas internacionales ante contendientes difíciles.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Orden táctico, combinaciones rectas y manejo de distancia para imponer su plan de pelea.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>Más de 35 victorias profesionales, incluyendo triunfos relevantes por título.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Ejemplo de constancia para nuevas generaciones; mostró que el trabajo silencioso rinde frutos.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 11/10/1983 · Debut profesional: 2000 (16–17 años) · Fallecimiento: —
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- Guillermo Jones -->
+                <article class="legend-card accent-red reveal" data-delay="200">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Guillermo Jones</h2>
+                            <div class="lx-sub">Crucero</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeón Mundial</span>
+                                <span class="lx-chip">Peso crucero</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Guillermo Jones" src="img/legends/guillermojones.jpg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Físico imponente y gran alcance. Jones impuso su pegada y jab para dominar la división crucero, dejando actuaciones de autoridad en el panorama mundial.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Título mundial crucero, con victorias sólidas frente a rivales europeos y latinoamericanos.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Boxeador de largo alcance: jab insistente, control del centro del ring y potencia en ambas manos.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>Más de 40 peleas profesionales; campeón lineal reconocido en la categoría.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Demostró que Panamá también puede producir campeones en categorías pesadas con técnica y condición.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 05/05/1972 · Debut profesional: 1993 (21 años) · Fallecimiento: —
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- Atheyna Bylon -->
+                <article class="legend-card accent-gold reveal" data-delay="250">
+                    <div class="chev">⌄</div>
+                    <div class="lx-head">
+                        <div>
+                            <h2 class="lx-name">Atheyna Bylon</h2>
+                            <div class="lx-sub">Medallista mundial · Boxeo femenino</div>
+                            <div class="lx-chips">
+                                <span class="lx-chip belt">Campeona Mundial (AIBA)</span>
+                                <span class="lx-chip">Elite femenina</span>
+                            </div>
+                        </div>
+                        <img class="lx-portrait" alt="Atheyna Bylon" src="img/legends/atheynabylon.jpg">
+                    </div>
+                    <div class="lx-body">
+                        <div class="lx-acc"><div class="lx-intro">
+                            <p>Pionera del boxeo femenino panameño en el máximo nivel, Bylon demostró técnica, disciplina y valentía al conquistar el oro mundial y representar a Panamá en torneos internacionales, inspirando a nuevas generaciones de deportistas.</p>
+                        </div>
+                        <div class="lx-grid">
+                            <div class="lx-block"><h4>Mejores logros</h4><p>Oro en el Campeonato Mundial AIBA, múltiples medallas continentales y participaciones en Juegos Panamericanos y Olímpicos.</p></div>
+                            <div class="lx-block"><h4>Estilo</h4><p>Boxeo técnico, control de distancia y combinaciones veloces. Sólido juego de piernas y lectura del rival.</p></div>
+                            <div class="lx-block"><h4>Récord</h4><p>Amplia trayectoria en el circuito amateur élite, con victorias destacadas frente a campeonas continentales y mundiales.</p></div>
+                            <div class="lx-block"><h4>Legado</h4><p>Figura clave del boxeo femenino panameño; ejemplo de perseverancia que abre puertas a más niñas y jóvenes en el deporte.</p></div>
+                            <div class="lx-block"><h4>Datos biográficos</h4><p>
+                                Nacimiento: 06/04/1989 · Debut internacional: 2014 (25 años) · Fallecimiento: —
+                            </p></div>
+                        </div></div>
+                    </div>
+                </article>
+            </div>
+
+            <div style="margin-top:22px; text-align:center;">
+                <div class="tagline">Honor, disciplina y campeones para siempre</div>
+            </div>
+        </div>
     </main>
+
+    <script>
+    (function(){
+        const cards = document.querySelectorAll('.legend-card');
+        cards.forEach((card)=>{
+            const acc = card.querySelector('.lx-acc');
+            card.addEventListener('click', ()=>{
+                const isOpen = card.classList.contains('open');
+                document.querySelectorAll('.legend-card.open').forEach(c=>{
+                    if(c!==card){ c.classList.remove('open'); const a=c.querySelector('.lx-acc'); if(a){ a.style.height='0px'; } }
+                });
+                if(!isOpen){ card.classList.add('open'); acc.style.height = acc.scrollHeight + 'px'; } else { card.classList.remove('open'); acc.style.height = '0px'; }
+            });
+            card.setAttribute('tabindex','0');
+            card.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.click(); } });
+            const d = Number(card.getAttribute('data-delay')||0); card.style.transitionDelay = (d/1000)+'s';
+        });
+
+        const io = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    })();
+    </script>
 
     <footer class="footer">
         <div class="footer-content">

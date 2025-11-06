@@ -6,6 +6,68 @@
     <title>MathFight - Entrenadores</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --c-red:#ff3b3b; --c-blue:#2ec5ff; --c-yellow:#ffd23f; --c-mint:#3af2b7; --c-pink:#ff7ac6; --c-ink:#0d1630;
+    }
+    body{ background: radial-gradient(1200px 800px at 50% -200px, #eef7ff 0%, #f7fbff 70%, #ffffff 100%); color: var(--c-ink); }
+    .page-wrap{ max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+
+    .page-title{ font-family: "Fredoka One"; font-size: clamp(28px,4.4vw,48px); margin: 8px 0 6px; background: linear-gradient(90deg,#0a1330,#2a7fff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .page-sub{ color:#3b4b73; font-family:"Fredoka"; margin-bottom: 18px; }
+
+    .grid{ display: grid; grid-template-columns: 1fr; gap: 22px; }
+
+    .coach-card{
+        border-radius: 22px; overflow: hidden; border: 1px solid rgba(13,22,48,.08);
+        box-shadow: 0 18px 44px rgba(13,22,48,.12); background: #fff;
+        transition: transform .25s ease, box-shadow .25s ease; cursor: pointer; position: relative;
+        max-width: 980px; margin: 0 auto; /* carta centrada y grande */
+    }
+    .coach-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 42px rgba(13,22,48,.14); }
+    .coach-head{ display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 18px; padding: 20px; }
+    .coach-img{ width: 100%; aspect-ratio: 1/1; object-fit: contain; filter: drop-shadow(0 16px 28px rgba(0,0,0,.14)); }
+    .coach-title{ font-family:"Fredoka One"; font-size: clamp(28px,3.6vw,36px); margin: 4px 0 4px; }
+    .coach-sub{ font-family:"Fredoka"; color:#2a3f6b; font-weight: 700; font-size: 18px; }
+    .coach-chips{ display:flex; gap:10px; margin-top:10px; flex-wrap: wrap; }
+    .chip{ padding:8px 12px; border-radius:999px; font-family:"Fredoka"; font-weight:700; font-size:14px; border:1px solid rgba(13,22,48,.08); background:#fff; box-shadow: 0 4px 10px rgba(13,22,48,.06); }
+
+    .bg-red{ background: linear-gradient(135deg,#fff0f0,#ffe2e2); }
+    .bg-blue{ background: linear-gradient(135deg,#edf7ff,#dff3ff); }
+    .bg-yellow{ background: linear-gradient(135deg,#fff8e2,#ffefbf); }
+    .bg-mint{ background: linear-gradient(135deg,#e9fff8,#d8fff3); }
+    .bg-pink{ background: linear-gradient(135deg,#ffe9f6,#ffd6f0); }
+
+    .coach-body{ padding: 0 20px 20px; }
+    .accordion{
+        height: 0; overflow: hidden; transition: height .45s ease, opacity .25s ease; opacity: 0;
+        border-top: 1px dashed rgba(13,22,48,.12); margin-top: 10px;
+    }
+    .coach-card.open .accordion{ opacity: 1; }
+
+    .acc-inner{ padding: 16px 4px 6px; }
+    .acc-media{ display:flex; gap:16px; align-items:flex-start; margin-bottom: 12px; flex-wrap: wrap; }
+    .real-img{ width: 100%; max-width: 520px; border-radius: 16px; box-shadow: 0 16px 32px rgba(13,22,48,.14); border: 1px solid rgba(13,22,48,.08); }
+    .acc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .acc-block{ background:#ffffff; border:1px solid rgba(13,22,48,.08); border-radius:16px; padding:12px 14px; box-shadow:0 10px 22px rgba(13,22,48,.08); }
+    .acc-block h4{ font-family:"Fredoka One"; margin:4px 0 6px; font-size:18px; }
+    .acc-block p{ margin:0; color:#28406f; line-height:1.7; font-family:"Fredoka"; font-size: 16px; }
+    @media (max-width: 720px){ .acc-grid{ grid-template-columns: 1fr; } .real-img{ max-width: 100%; } }
+
+    /* Acentos laterales por tarjeta */
+    .coach-card.bg-mint{ box-shadow: 0 18px 44px rgba(58,242,183,.16); border-left: 8px solid var(--c-mint); }
+    .coach-card.bg-yellow{ box-shadow: 0 18px 44px rgba(255,210,63,.16); border-left: 8px solid var(--c-yellow); }
+    .coach-card.bg-blue{ box-shadow: 0 18px 44px rgba(46,197,255,.16); border-left: 8px solid var(--c-blue); }
+    .coach-card.bg-pink{ box-shadow: 0 18px 44px rgba(255,122,198,.16); border-left: 8px solid var(--c-pink); }
+    .coach-card.bg-red{ box-shadow: 0 18px 44px rgba(255,59,59,.16); border-left: 8px solid var(--c-red); }
+
+    /* Indicador desplegable */
+    .chev{ position:absolute; right:16px; top:16px; width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; font-size:18px; background: rgba(13,22,48,.04); box-shadow: 0 4px 10px rgba(13,22,48,.06); transition: transform .3s ease; }
+    .coach-card.open .chev{ transform: rotate(180deg); }
+
+    .reveal{ opacity:0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.in{ opacity:1; transform: none; }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -23,8 +85,242 @@
     </nav>
 
     <main class="main-content">
-        <!-- Entrenadores - contenido por definir -->
+        <div class="page-wrap">
+            <h1 class="page-title">Conoce a tus entrenadores</h1>
+            <p class="page-sub">Cada entrenador está inspirado en un animal emblemático de Panamá. Toca una tarjeta para aprender sobre su hábitat, características y más.</p>
+
+            <div class="grid">
+                <!-- 1) Oli - Olingo de Chiriquí -->
+                <article class="coach-card bg-mint reveal" data-delay="0">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Oli</div>
+                            <div class="coach-sub">Olingo de Chiriquí</div>
+                            <div class="coach-chips">
+                                <span class="chip">Nocturno</span>
+                                <span class="chip">Árboles</span>
+                                <span class="chip">Omnívoro</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/Oli.png" alt="Oli - Olingo de Chiriquí" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Olingo de Chiriquí" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Bassaricyon_gabbii.jpg">
+                                <p class="acc-text">El olingo de Chiriquí es un mamífero arborícola sigiloso y curioso que habita el dosel de los bosques nubosos. Su agilidad le permite desplazarse entre ramas con gran precisión y aprovechar frutos y néctar durante la noche. Aunque es discreto, cumple un rol importante en la dispersión de semillas y en el equilibrio del ecosistema altoandino.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Bosques nubosos y montanos del oeste de Panamá, especialmente en Chiriquí, donde pasa la vida entre lianas y epífitas. Prefiere áreas con abundantes flores y frutos, y evita los claros expuestos.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Principalmente frutas y néctar, complementados con insectos y pequeñas presas. Esta dieta variada le permite ajustarse a los cambios estacionales del bosque.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Cuerpo ágil con cola parcialmente prensil, orejas redondeadas y pelaje denso que lo protege de la humedad. Sus grandes ojos facilitan la visión nocturna.</p></div>
+                                <div class="acc-block"><h4>Comportamiento</h4><p>Generalmente solitario o en pequeños grupos familiares. Se comunica con chillidos suaves y marcas olfativas, y es más activo en las horas nocturnas.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- 2) Goldie - Rana dorada -->
+                <article class="coach-card bg-yellow reveal" data-delay="50">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Goldie</div>
+                            <div class="coach-sub">Rana dorada</div>
+                            <div class="coach-chips">
+                                <span class="chip">Día</span>
+                                <span class="chip">Arroyos</span>
+                                <span class="chip">Insectívora</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/Goldie.png" alt="Goldie - Rana dorada" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Rana dorada panameña" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Atelopus_zeteki2.jpg">
+                                <p class="acc-text">La rana dorada es un icono de Panamá: su color brillante advierte sobre sus toxinas defensivas. Vive cerca de arroyos de agua clara donde sus señales visuales y movimientos se aprecian con facilidad. Su historia también enseña sobre conservación y ciencia, pues enfrenta amenazas y es protegida en programas especiales.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Quebradas y bosques húmedos del oeste y centro de Panamá, con vegetación densa y rocas húmedas. Requiere agua limpia y temperaturas estables.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Pequeños invertebrados como hormigas, escarabajos y mosquitos, capturados con su lengua rápida y pegajosa.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Coloración dorada intensa y señales visuales con patas y cuerpo. Su piel contiene toxinas protectoras; por eso no debe manipularse.</p></div>
+                                <div class="acc-block"><h4>Conservación</h4><p>En peligro crítico por el hongo quítrido y pérdida de hábitat. Zoológicos y centros de rescate mantienen poblaciones de conservación para su futuro.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- 3) Tuga - Tortuga Morrocoy -->
+                <article class="coach-card bg-blue reveal" data-delay="100">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Tuga</div>
+                            <div class="coach-sub">Tortuga Morrocoy</div>
+                            <div class="coach-chips">
+                                <span class="chip">Terrestre</span>
+                                <span class="chip">Larga vida</span>
+                                <span class="chip">Herbívora</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/Tuga.png" alt="Tuga - Tortuga Morrocoy" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Tortuga morrocoy" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Chelonoidis_carbonarius_01.jpg">
+                                <p class="acc-text">La morrocoy es paciente y resistente. Su caparazón alto la protege y le permite llevar un ritmo tranquilo, perfecto para enseñar constancia. En ecosistemas de sabanas y bosques secos, cumple un papel clave dispersando semillas y manteniendo la vegetación.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Bosques secos, claros y sabanas arboladas. Prefiere zonas con sombra, suelos blandos y refugios naturales.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Principalmente hojas, flores y frutos caídos. También puede consumir hongos y, rara vez, pequeños invertebrados.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Caparazón alto con manchas amarillas, patas robustas y hábitos diurnos moderados. Es un símbolo de paciencia y fortaleza.</p></div>
+                                <div class="acc-block"><h4>Comportamiento</h4><p>De movimientos lentos, más activa en amaneceres y atardeceres para evitar el calor. Puede vivir varias décadas.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- 4) Laze - Perezoso de dos dedos (archivo Lazy.png) -->
+                <article class="coach-card bg-pink reveal" data-delay="150">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Laze</div>
+                            <div class="coach-sub">Perezoso de dos dedos</div>
+                            <div class="coach-chips">
+                                <span class="chip">Nocturno</span>
+                                <span class="chip">Arborícola</span>
+                                <span class="chip">Folívoro</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/Lazy.png" alt="Laze - Perezoso de dos dedos" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Perezoso de dos dedos" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Choloepus_hoffmanni.jpg">
+                                <p class="acc-text">El perezoso de dos dedos es un maestro de la calma. Su cuerpo está adaptado a colgar de los árboles con garras fuertes, y su pelaje puede albergar algas que lo camuflan. Enseña que el aprendizaje también necesita pausas y que la constancia gana carreras largas.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Selvas húmedas, manglares y bosques secundarios. Pasa la mayor parte del tiempo en el dosel, colgado boca abajo.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Hojas tiernas, brotes y frutos. Su metabolismo lento reduce la necesidad de energía.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Garras curvadas muy fuertes, pelaje denso y a veces verdoso por la presencia de algas simbióticas.</p></div>
+                                <div class="acc-block"><h4>Comportamiento</h4><p>Movimientos pausados y silenciosos. Solo baja al suelo en ocasiones para cambiar de árbol o defecar.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- 5) Jagro - Jaguar de Panamá (archivo jagro.png en minúsculas) -->
+                <article class="coach-card bg-red reveal" data-delay="200">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Jagro</div>
+                            <div class="coach-sub">Jaguar de Panamá</div>
+                            <div class="coach-chips">
+                                <span class="chip">Depredador</span>
+                                <span class="chip">Ríos</span>
+                                <span class="chip">Carnívoro</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/jagro.png" alt="Jagro - Jaguar de Panamá" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Jaguar panameño" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Standing_jaguar.jpg">
+                                <p class="acc-text">El jaguar es el gran felino de América. Fuerte y sigiloso, caza con precisión y destaca por su mordida poderosa. En Panamá ocupa desde selvas densa hasta áreas ribereñas, siendo fundamental para mantener el equilibrio de las poblaciones de presas.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Selvas tropicales, bosques ribereños y humedales. Suele moverse por riberas y caminos naturales, y es un excelente nadador.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Pecaríes, venados y roedores grandes. Su mordida puede perforar caparazones de tortugas y cráneos de presas.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Pelaje con rosetas, cuerpo robusto y patas poderosas. Es el felino más fuerte de América por tamaño y mordida.</p></div>
+                                <div class="acc-block"><h4>Conservación</h4><p>Amenazado por la fragmentación del hábitat y conflictos con humanos. Corredores biológicos ayudan a su supervivencia.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+                <!-- 6) Harpix - Águila arpía -->
+                <article class="coach-card bg-blue reveal" data-delay="250">
+                    <div class="chev">⌄</div>
+                    <div class="coach-head">
+                        <div class="coach-info">
+                            <div class="coach-title">Harpix</div>
+                            <div class="coach-sub">Águila arpía</div>
+                            <div class="coach-chips">
+                                <span class="chip">Aéreo</span>
+                                <span class="chip">Bosques</span>
+                                <span class="chip">Carnívora</span>
+                            </div>
+                        </div>
+                        <img src="img/coaches/Harpix.png" alt="Harpix - Águila arpía" class="coach-img">
+                    </div>
+                    <div class="coach-body">
+                        <div class="accordion"><div class="acc-inner">
+                            <div class="acc-media">
+                                <img class="real-img" alt="Águila arpía" src="https://wildexpedition.com/es/pajaro/aguila-harpia/">
+                                <p class="acc-text">La águila arpía es una de las rapaces más poderosas del mundo. Sus garras gigantes y su vista aguda la convierten en una cazadora extraordinaria. En Panamá es símbolo nacional y un recordatorio del valor de proteger nuestros bosques.</p>
+                            </div>
+                            <div class="acc-grid">
+                                <div class="acc-block"><h4>Hábitat</h4><p>Selvas tropicales de tierras bajas con árboles muy altos. Anida en emergentes donde construye nidos enormes y reutilizables.</p></div>
+                                <div class="acc-block"><h4>Alimentación</h4><p>Perezosos, monos y aves grandes. Caza desde perchas altas realizando ataques veloces y precisos.</p></div>
+                                <div class="acc-block"><h4>Características</h4><p>Garras enormes, cresta distintiva y envergadura imponente. Está adaptada para maniobrar entre árboles densos.</p></div>
+                                <div class="acc-block"><h4>Conservación</h4><p>Vulnerable por pérdida de hábitat y caza ilegal. Es protegida por la ley y programas de monitoreo.</p></div>
+                            </div>
+                        </div></div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
     </main>
+
+    <script>
+    // Toggle de tarjetas + animación de altura
+    (function(){
+        const cards = document.querySelectorAll('.coach-card');
+        cards.forEach((card, idx)=>{
+            const acc = card.querySelector('.accordion');
+            card.addEventListener('click', ()=>{
+                const open = card.classList.contains('open');
+                // cerrar los demás
+                document.querySelectorAll('.coach-card.open').forEach(c=>{
+                    if(c!==card){
+                        c.classList.remove('open');
+                        const a = c.querySelector('.accordion');
+                        if(a){ a.style.height = '0px'; }
+                    }
+                });
+                if(!open){
+                    card.classList.add('open');
+                    acc.style.height = acc.scrollHeight + 'px';
+                } else {
+                    card.classList.remove('open');
+                    acc.style.height = '0px';
+                }
+            });
+            // accesibilidad: tecla Enter/Espacio
+            card.setAttribute('tabindex','0');
+            card.addEventListener('keydown', (e)=>{
+                if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.click(); }
+            });
+            // reveal escalonado
+            const delay = Number(card.getAttribute('data-delay')||0);
+            card.style.transitionDelay = (delay/1000)+'s';
+        });
+
+        // IntersectionObserver para reveal
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: .1 });
+        document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    })();
+    </script>
 
     <footer class="footer">
         <div class="footer-content">
