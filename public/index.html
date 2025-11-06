@@ -3,9 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathFight</title>
+    <title>MathFight - Inicio</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+    /* —— Estilos específicos de Inicio (tonos vibrantes y juguetones) —— */
+    :root {
+        --mf-primary: #ff3b3b; /* guante rojo */
+        --mf-secondary: #2ec5ff; /* azul brillante */
+        --mf-yellow: #ffd23f; /* campana/estrella */
+        --mf-deep: #0f1226; /* fondo oscuro ring */
+        --mf-mint: #3af2b7;
+        --mf-pink: #ff7ac6;
+        --mf-white: #ffffff;
+    }
+
+    body {
+        background: radial-gradient(1400px 900px at 50% -300px, #e9f6ff 0%, #dff3ff 35%, #eaf7ff 70%, #f6fbff 100%);
+        overflow-x: hidden;
+        color: #0d1630;
+    }
+
+    /* —— HERO —— */
+    .hero {
+        position: relative;
+        padding: 96px 20px 120px; /* más espacio para las cuerdas sin superponer */
+        color: #0d1630;
+        overflow: clip;
+    }
+    .hero-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 32px;
+        align-items: center;
+        position: relative;
+        z-index: 3; /* sobre decoraciones */
+    }
+    .hero-badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        backdrop-filter: blur(6px);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-family: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-weight: 600;
+        letter-spacing: .3px;
+        width: fit-content;
+        animation: popIn .8s ease-out both;
+    }
+    .hero h1 {
+        font-family: "Fredoka One", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-size: clamp(36px, 5vw, 64px);
+        line-height: 1.05;
+        margin: 12px 0 10px;
+        color: #0a1330;
+        background: linear-gradient(90deg, #0a1330, #2756ff, #ff2e5f);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p.lead {
+        font-family: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-size: clamp(16px, 2.2vw, 20px);
+        color: #3b4b73;
+        line-height: 1.55;
+        margin-bottom: 22px;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+        display: inline-flex; align-items: center; gap: 10px;
+        padding: 12px 18px; border-radius: 14px; border: 0; cursor: pointer;
+        font-family: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-weight: 700; letter-spacing: .2px; text-decoration: none;
+        transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+        box-shadow: 0 6px 0 rgba(0,0,0,.25);
+    }
+    .btn:active { transform: translateY(2px); box-shadow: 0 4px 0 rgba(0,0,0,.25); }
+    .btn-primary { background: linear-gradient(180deg, var(--mf-primary), #c50808); color: var(--mf-white); }
+    .btn-secondary { background: linear-gradient(180deg, var(--mf-secondary), #1ea6d8); color: #04121a; }
+    .btn-ghost { background: rgba(252, 19, 19, 0.719); color: #ffffff; border: 1px solid rgba(255,255,255,0.18); }
+    .btn span { font-size: 18px; }
+    .btn-primary { box-shadow: 0 6px 0 rgba(216,31,31,.45); }
+    .btn-secondary { box-shadow: 0 6px 0 rgba(30,166,216,.35); }
+
+    /* Visual ring */
+    .ring {
+        position: absolute; inset: 0; pointer-events: none; z-index: 1;
+        background: radial-gradient(700px 260px at 50% 100%, rgba(46,197,255,.15), transparent),
+                    radial-gradient(800px 320px at 50% 100%, rgba(255,59,59,.12), transparent);
+        opacity: .9;
+    }
+    .ropes {
+        position: absolute; left: 0; right: 0; bottom: 0; height: 120px; z-index: 2;
+        background:
+            repeating-linear-gradient( to right,
+                rgba(255,255,255,.18) 0 24px, transparent 24px 28px
+            );
+        mask: linear-gradient(to top, black 55%, transparent);
+        opacity: .6;
+    }
+    .rope-line {
+        position: absolute; left: 0; right: 0; height: 6px; border-radius: 6px;
+        background: linear-gradient(90deg, #ff7a7a, #2ec5ff);
+        opacity: .8;
+    }
+    .rope-1 { bottom: 26px; }
+    .rope-2 { bottom: 54px; }
+    .rope-3 { bottom: 82px; }
+
+    /* —— Paneles y tarjetas con más vida —— */
+    .panel {
+        background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
+        border: 1px solid rgba(13,22,48,.08);
+        border-radius: 22px;
+        box-shadow: 0 12px 28px rgba(13,22,48,.12), 0 2px 0 rgba(13,22,48,.05) inset;
+        padding: 18px;
+    }
+
+    /* —— Secciones —— */
+    .section {
+        position: relative;
+        padding: 64px 20px;
+        color: #0d1630;
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section h2 {
+        font-family: "Fredoka One", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-size: clamp(28px, 3.6vw, 40px);
+        margin-bottom: 14px;
+        background: linear-gradient(90deg, #0a1330, #2a7fff);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pill {
+        display: inline-block; padding: 6px 12px; border-radius: 999px; font-weight: 700;
+        background: rgba(13,22,48,0.06); border: 1px solid rgba(13,22,48,0.1);
+        color: #0d1630; margin-bottom: 8px; font-family: "Fredoka", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    .grid-3 {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px;
+    }
+    .card {
+        position: relative;
+        border-radius: 18px; padding: 18px 18px 16px 18px; min-height: 170px;
+        box-shadow: 0 14px 30px rgba(13,22,48,.14);
+        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+        color: #0a1330;
+    }
+    .card:hover { transform: translateY(-6px) rotate(-.2deg); box-shadow: 0 18px 36px rgba(13,22,48,.18); filter: saturate(1.05); }
+    .card h3 { font-family: "Fredoka One"; margin: 6px 0 6px; font-size: 22px; }
+    .card p { color: #203257; line-height: 1.6; }
+    .card .icon {
+        width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+        font-size: 26px; font-weight: 900; color: #06112b; box-shadow: 0 6px 18px rgba(0,0,0,.12);
+        margin-bottom: 8px;
+    }
+    .card--red { background: linear-gradient(180deg, #fff0f0, #ffe3e3); border: 1px solid rgba(216,31,31,.18); }
+    .card--red .icon { background: linear-gradient(180deg, #ffb3b3, #ff6b6b); }
+    .card--blue { background: linear-gradient(180deg, #edf7ff, #e3f3ff); border: 1px solid rgba(30,166,216,.18); }
+    .card--blue .icon { background: linear-gradient(180deg, #bde7ff, #6cd0ff); }
+    .card--yellow { background: linear-gradient(180deg, #fff7df, #fff0c4); border: 1px solid rgba(255,210,63,.22); }
+    .card--yellow .icon { background: linear-gradient(180deg, #ffe495, #ffd23f); }
+
+    /* —— Callouts —— */
+    .callout {
+        display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; align-items: center;
+        background: linear-gradient(180deg, rgba(46,197,255,.14), rgba(255,59,59,.12));
+        border: 1px solid rgba(13,22,48,.08);
+        padding: 18px; border-radius: 18px; margin-top: 16px;
+        box-shadow: 0 14px 32px rgba(13,22,48,.12);
+    }
+    .callout.alt { grid-template-columns: .9fr 1.1fr; }
+    .callout h3 { font-family: "Fredoka One"; margin: 0 0 6px; }
+    .callout p { margin: 0 0 10px; color: #3b4b73; }
+
+    /* —— Animaciones —— */
+    @keyframes floatUp {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(2.5deg); }
+    }
+    @keyframes popIn {
+        0% { transform: scale(.8); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes pulseGlow {
+        0%,100% { box-shadow: 0 0 0 0 rgba(255,210,63,.0); }
+        50% { box-shadow: 0 0 0 12px rgba(255,210,63,.08); }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .slide-left { opacity: 0; transform: translateX(24px); transition: opacity .7s ease, transform .7s ease; background: linear-gradient(90deg, #0a1330, #2a7fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .slide-left.in { opacity: 1; transform: none; }
+    .slide-right { opacity: 0; transform: translateX(-24px); transition: opacity .7s ease, transform .7s ease; }
+    .slide-right.in { opacity: 1; transform: none; }
+
+    /* —— Responsivo —— */
+    @media (max-width: 960px) {
+        .hero-inner { grid-template-columns: 1fr; }
+        .grid-3 { grid-template-columns: 1fr; }
+        .callout { grid-template-columns: 1fr; }
+        .ropes { height: 100px; }
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -14,7 +219,7 @@
                 <img src="img/logo.png" alt="MathFight" class="brand-logo">
             </div>
             <div class="nav-menu">
-                <a class="nav-button" href="mainpage.html">Inicio</a>
+                <a class="nav-button" href="index.html">Inicio</a>
                 <a class="nav-button" href="coaches.html">Entrenadores</a>
                 <a class="nav-button" href="ranking.html">Ranking</a>
                 <a class="nav-button" href="legends.html">Leyendas</a>
@@ -23,25 +228,115 @@
     </nav>
 
     <main class="main-content">
-        <!-- Content will be added here later -->
-    </main>
+        <section class="hero">
+            <div class="ring" aria-hidden="true"></div>
+            <div class="ropes" aria-hidden="true">
+                <div class="rope-line rope-1"></div>
+                <div class="rope-line rope-2"></div>
+                <div class="rope-line rope-3"></div>
+            </div>
 
-    <!-- Modal de bienvenida -->
-    <div id="welcomeModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-image">
-                <img id="modalImage" src="" alt="Imagen de bienvenida">
-            </div>
-            <div class="modal-controls">
-                <div id="buttonContainer" class="button-container">
-                    <!-- Los botones se generarán dinámicamente -->
+            
+
+            <div class="hero-inner">
+                <div class="slide-right">
+                    <div class="hero-badge"><span>🥊</span> ¡Entrena tu mente como un campeón!</div>
+                    <h1>Matefight: Boxeo + Matemáticas = Diversión y aprendizaje</h1>
+                    <p class="lead">App web para niños de primaria que convierte los <strong>cálculos mentales</strong> en un juego de entrenamiento. Con <strong>Entrenadores</strong> animales emblemáticos de Panamá que te guían y animan, ¡y un rincón de <strong>leyendas del boxeo panameño</strong> para inspirarte!</p>
+                    <div class="hero-ctas">
+                        <a class="btn btn-primary" href="welcome.html"><span>Comenzar a entrenar</span> 🧠</a>
+                        <a class="btn btn-secondary" href="coaches.html"><span>Conoce a tus entrenadores</span> 🐾</a>
+                        <a class="btn btn-ghost" href="legends.html"><span>Leyendas</span> ⭐</a>
+                    </div>
                 </div>
-                <div id="inputContainer" class="input-container" style="display: none;">
-                    <input type="text" id="nameInput" placeholder="Ingresa tu nombre" maxlength="20">
+                <div class="slide-left">
+                    <img src="img/index_logo.png" alt="Guantes y números flotando" style="width:100%; max-width:1500px; filter: drop-shadow(0 28px 40px rgba(0,0,0,.25)); animation: pulseGlow 4s ease-in-out infinite; border-radius: 16px; background: rgba(255, 255, 255, 0);">
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner panel reveal">
+                <span class="pill">¿Qué es Matefight?</span>
+                <h2>Una forma sencilla y divertida de practicar cálculos mentales</h2>
+                <div class="grid-3">
+                    <div class="card card--red reveal">
+                        <div class="icon">🥊</div>
+                        <h3>Rondas rápidas</h3>
+                        <p>Desafíos cortos tipo “round” con sumas, restas, multiplicaciones y divisiones. ¡Sube tu marcador como si fueras al ring!</p>
+                    </div>
+                    <div class="card card--blue reveal" style="transition-delay: .1s;">
+                        <div class="icon">📈</div>
+                        <h3>Progreso visible</h3>
+                        <p>Gana puntos, mira tu posición en el ranking y celebra cada mejora. ¡Cada entrenamiento cuenta!</p>
+                    </div>
+                    <div class="card card--yellow reveal" style="transition-delay: .2s;">
+                        <div class="icon">🎉</div>
+                        <h3>Diversión primero</h3>
+                        <p>Interfaz colorida, animaciones y recompensas amigables para que practicar sea un juego diario.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <span class="pill">Tus guías</span>
+                <h2>Entrenadores por grado: animales emblemáticos de Panamá</h2>
+                <div class="callout alt">
+                    <div class="slide-right">
+                        <h3>Conoce a tus entrenadores</h3>
+                        <p>Cada grado escolar tiene su <strong>Entrenador</strong>: animales icónicos que te explican, motivan y celebran contigo. ¡Te acompañan en cada práctica!</p>
+                        <a class="btn btn-secondary" href="coaches.html">Conoce a tus entrenadores 🐾</a>
+                    </div>
+                    <div class="slide-left">
+                        <img src="img/coaches_winners.png" alt="Entrenadores animales de Panamá" style="width:100%; max-width:460px; border-radius: 14px; box-shadow: 0 18px 36px rgba(13,22,48,.18); background: rgba(255, 255, 255, 0);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner">
+                <span class="pill">Inspírate</span>
+                <h2>Leyendas del boxeo panameño</h2>
+                <div class="callout">
+                    <div class="slide-right">
+                        <h3>Grandes historias, grandes golpes</h3>
+                        <p>Explora a los campeones que pusieron a Panamá en lo más alto del ring. Lee, inspírate y… ¿quién sabe? Tal vez quieras practicar boxeo también.</p>
+                        <a class="btn btn-ghost" href="legends.html">Leyendas ⭐</a>
+                    </div>
+                    <div class="slide-left">
+                        <img src="img/heros.png" alt="Leyendas del boxeo panameño" style="width:100%; width:700px; border-radius: 14px; box-shadow: 0 18px 36px rgba(13,22,48,.18); background: rgba(255,255,255,.85);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-inner" style="text-align:center;">
+                <span class="pill">¡Listo para el siguiente round?</span>
+                <h2>Demuestra tu poder mental en el ring de Matefight</h2>
+                <p style="color:#475b8e; max-width:720px; margin: 0 auto 16px; font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">Calienta, respira y… ¡ding ding! Entra a entrenar con retos cortos, coloridos y muy divertidos. Tus entrenadores te esperan.</p>
+                <a class="btn btn-primary" href="welcome.html"><span>Comenzar a entrenar</span> 🧠</a>
+            </div>
+        </section>
+    </main>
+    <script>
+    // Revela elementos al hacer scroll evitando superposiciones visuales
+    (function(){
+        const inView = new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){
+                    e.target.classList.add('in');
+                    inView.unobserve(e.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+        document.querySelectorAll('.reveal, .slide-left, .slide-right').forEach(el=>inView.observe(el));
+    })();
+    </script>
 
     <footer class="footer">
         <div class="footer-content">
@@ -53,188 +348,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Variable global para almacenar el nombre del usuario
-        let userName = '';
-
-        // Configuración de las imágenes y botones del modal
-        const modalSteps = [
-            {
-                image: 'img/welcome/harpix_welcome.png',
-                buttonText: 'Siguiente',
-                buttonAction: 'next'
-            },
-            {
-                image: 'img/welcome/harpix_expli.png',
-                buttonText: 'Siguiente',
-                buttonAction: 'next'
-            },
-            {
-                image: 'img/welcome/harpix_intro.png',
-                buttonText: 'Siguiente',
-                buttonAction: 'next'
-            },
-            {
-                image: 'img/welcome/harpix_nameq.png',
-                buttonText: 'Registrar',
-                buttonAction: 'register',
-                showInput: true
-            },
-            {
-                image: 'img/welcome/harpix_gradesel.png',
-                buttonText: 'Seleccionar Grado',
-                buttonAction: 'showGrades',
-                showGrades: true
-            }
-        ];
-
-        let currentStep = 0;
-
-        // Función para mostrar el modal
-        function showModal() {
-            document.getElementById('welcomeModal').style.display = 'flex';
-            updateModalContent();
-        }
-
-        // Función para actualizar el contenido del modal
-        function updateModalContent() {
-            const step = modalSteps[currentStep];
-            const modalImage = document.getElementById('modalImage');
-            const buttonContainer = document.getElementById('buttonContainer');
-            const inputContainer = document.getElementById('inputContainer');
-
-            // Animación de transición de imagen
-            modalImage.style.opacity = '0';
-            modalImage.style.transform = 'scale(0.8) rotateY(15deg)';
-            
-            setTimeout(() => {
-                modalImage.src = step.image;
-                modalImage.style.opacity = '1';
-                modalImage.style.transform = 'scale(1) rotateY(0deg)';
-            }, 200);
-
-            // Limpiar contenedores con animación
-            buttonContainer.style.opacity = '0';
-            buttonContainer.style.transform = 'translateY(20px)';
-            inputContainer.style.display = 'none';
-            
-            // Limpiar completamente el contenido anterior
-            buttonContainer.innerHTML = '';
-
-            if (step.showInput) {
-                // Mostrar input para nombre con animación
-                setTimeout(() => {
-                    inputContainer.style.display = 'flex';
-                    inputContainer.style.opacity = '0';
-                    inputContainer.style.transform = 'translateY(20px)';
-                    
-                    setTimeout(() => {
-                        inputContainer.style.opacity = '1';
-                        inputContainer.style.transform = 'translateY(0)';
-                    }, 100);
-                }, 300);
-                
-                const nameInput = document.getElementById('nameInput');
-                nameInput.value = '';
-            }
-
-            if (step.showGrades) {
-                // Mostrar botones de grados con animación escalonada
-                setTimeout(() => {
-                    const gradeButtons = document.createElement('div');
-                    gradeButtons.className = 'grade-buttons';
-                    
-                    for (let i = 1; i <= 6; i++) {
-                        const button = document.createElement('button');
-                        button.className = 'grade-button';
-                        button.textContent = `Grado ${i}`;
-                        button.onclick = () => handleGradeClick(i);
-                        button.style.animationDelay = `${i * 0.1}s`;
-                        gradeButtons.appendChild(button);
-                    }
-                    
-                    buttonContainer.appendChild(gradeButtons);
-                    
-                    setTimeout(() => {
-                        buttonContainer.style.opacity = '1';
-                        buttonContainer.style.transform = 'translateY(0)';
-                    }, 100);
-                }, 300);
-            } else {
-                // Mostrar botón "Siguiente" con animación
-                setTimeout(() => {
-                    const button = document.createElement('button');
-                    button.className = 'modal-button';
-                    button.textContent = 'Siguiente';
-                    button.onclick = handleButtonClick;
-                    buttonContainer.appendChild(button);
-                    
-                    setTimeout(() => {
-                        buttonContainer.style.opacity = '1';
-                        buttonContainer.style.transform = 'translateY(0)';
-                    }, 100);
-                }, 300);
-            }
-        }
-
-        // Función para manejar clics en botones
-        function handleButtonClick() {
-            const step = modalSteps[currentStep];
-            
-            if (step.buttonAction === 'next') {
-                currentStep++;
-                if (currentStep < modalSteps.length) {
-                    updateModalContent();
-                } else {
-                    closeModal();
-                }
-            } else if (step.buttonAction === 'register') {
-                const nameInput = document.getElementById('nameInput');
-                userName = nameInput.value.trim();
-                
-                if (userName) {
-                    currentStep++;
-                    updateModalContent();
-                } else {
-                    alert('Por favor, ingresa tu nombre');
-                }
-            }
-        }
-
-        // Función para manejar clics en botones de grado
-        function handleGradeClick(grade) {
-            // Ocultar todos los botones de grado
-            const gradeButtons = document.querySelectorAll('.grade-button');
-            gradeButtons.forEach(button => {
-                button.style.opacity = '0';
-                button.style.transform = 'scale(0.8)';
-            });
-            
-            // Navegar después de la animación
-            setTimeout(() => {
-                goToGrade(grade);
-            }, 300);
-        }
-
-        // Función para ir a un grado específico con animación
-        function goToGrade(grade) {
-            // Animación de salida
-            const modal = document.getElementById('welcomeModal');
-            modal.style.animation = 'modalFadeOut 0.5s ease-in forwards';
-            
-            setTimeout(() => {
-                window.location.href = `${grade}_grado.html`;
-            }, 500);
-        }
-
-        // Función para cerrar el modal
-        function closeModal() {
-            document.getElementById('welcomeModal').style.display = 'none';
-        }
-
-        // Mostrar el modal cuando se carga la página
-        window.addEventListener('load', showModal);
-    </script>
 </body>
 </html>
