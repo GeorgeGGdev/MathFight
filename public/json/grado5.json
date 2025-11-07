@@ -1,0 +1,132 @@
+{
+  "grado": 5,
+  "descripcion": "Prácticas de multiplicación con tablas del 5 al 7.",
+  "practicas": [
+    {
+      "id": 1,
+      "nombre": "Práctica 1 - Tabla del 5",
+      "ejercicios": [
+        { "operacion": "5x1", "respuesta": 5 },
+        { "operacion": "5x2", "respuesta": 10 },
+        { "operacion": "5x3", "respuesta": 15 },
+        { "operacion": "5x4", "respuesta": 20 },
+        { "operacion": "5x5", "respuesta": 25 },
+        { "operacion": "5x6", "respuesta": 30 },
+        { "operacion": "5x7", "respuesta": 35 },
+        { "operacion": "5x8", "respuesta": 40 },
+        { "operacion": "5x9", "respuesta": 45 },
+        { "operacion": "5x10", "respuesta": 50 },
+        { "operacion": "5x11", "respuesta": 55 },
+        { "operacion": "5x12", "respuesta": 60 },
+        { "operacion": "5x3", "respuesta": 15 },
+        { "operacion": "5x7", "respuesta": 35 },
+        { "operacion": "5x2", "respuesta": 10 }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Práctica 2 - Tabla del 6",
+      "ejercicios": [
+        { "operacion": "6x1", "respuesta": 6 },
+        { "operacion": "6x2", "respuesta": 12 },
+        { "operacion": "6x3", "respuesta": 18 },
+        { "operacion": "6x4", "respuesta": 24 },
+        { "operacion": "6x5", "respuesta": 30 },
+        { "operacion": "6x6", "respuesta": 36 },
+        { "operacion": "6x7", "respuesta": 42 },
+        { "operacion": "6x8", "respuesta": 48 },
+        { "operacion": "6x9", "respuesta": 54 },
+        { "operacion": "6x10", "respuesta": 60 },
+        { "operacion": "6x11", "respuesta": 66 },
+        { "operacion": "6x12", "respuesta": 72 },
+        { "operacion": "6x4", "respuesta": 24 },
+        { "operacion": "6x7", "respuesta": 42 },
+        { "operacion": "6x8", "respuesta": 48 }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Práctica 3 - Tabla del 7",
+      "ejercicios": [
+        { "operacion": "7x1", "respuesta": 7 },
+        { "operacion": "7x2", "respuesta": 14 },
+        { "operacion": "7x3", "respuesta": 21 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "7x5", "respuesta": 35 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "7x7", "respuesta": 49 },
+        { "operacion": "7x8", "respuesta": 56 },
+        { "operacion": "7x9", "respuesta": 63 },
+        { "operacion": "7x10", "respuesta": 70 },
+        { "operacion": "7x11", "respuesta": 77 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "7x3", "respuesta": 21 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "7x6", "respuesta": 42 }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Práctica 4 - Tablas 5 y 6",
+      "ejercicios": [
+        { "operacion": "5x4", "respuesta": 20 },
+        { "operacion": "6x6", "respuesta": 36 },
+        { "operacion": "5x7", "respuesta": 35 },
+        { "operacion": "6x8", "respuesta": 48 },
+        { "operacion": "5x9", "respuesta": 45 },
+        { "operacion": "5x10", "respuesta": 50 },
+        { "operacion": "6x7", "respuesta": 42 },
+        { "operacion": "6x4", "respuesta": 24 },
+        { "operacion": "5x12", "respuesta": 60 },
+        { "operacion": "6x12", "respuesta": 72 },
+        { "operacion": "6x11", "respuesta": 66 },
+        { "operacion": "5x11", "respuesta": 55 },
+        { "operacion": "5x6", "respuesta": 30 },
+        { "operacion": "6x3", "respuesta": 18 },
+        { "operacion": "5x8", "respuesta": 40 }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Práctica 5 - Tablas 5 y 7",
+      "ejercicios": [
+        { "operacion": "5x3", "respuesta": 15 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "5x6", "respuesta": 30 },
+        { "operacion": "7x8", "respuesta": 56 },
+        { "operacion": "5x12", "respuesta": 60 },
+        { "operacion": "7x7", "respuesta": 49 },
+        { "operacion": "5x9", "respuesta": 45 },
+        { "operacion": "7x10", "respuesta": 70 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "5x11", "respuesta": 55 },
+        { "operacion": "7x2", "respuesta": 14 },
+        { "operacion": "5x5", "respuesta": 25 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "5x4", "respuesta": 20 },
+        { "operacion": "7x3", "respuesta": 21 }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Práctica 6 - Tablas 6 y 7",
+      "ejercicios": [
+        { "operacion": "6x2", "respuesta": 12 },
+        { "operacion": "7x5", "respuesta": 35 },
+        { "operacion": "6x7", "respuesta": 42 },
+        { "operacion": "7x8", "respuesta": 56 },
+        { "operacion": "6x9", "respuesta": 54 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "6x10", "respuesta": 60 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "6x12", "respuesta": 72 },
+        { "operacion": "7x11", "respuesta": 77 },
+        { "operacion": "6x3", "respuesta": 18 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "6x5", "respuesta": 30 },
+        { "operacion": "7x3", "respuesta": 21 },
+        { "operacion": "6x8", "respuesta": 48 }
+      ]
+    }
+  ]
+}

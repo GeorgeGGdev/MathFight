@@ -1,0 +1,52 @@
+{
+    "grado": 6,
+    "descripcion": "Prácticas de multiplicación con tablas del 7 al 12.",
+    "practicas": [
+      {
+        "id": 1,
+        "nombre": "Práctica 1 - Tablas 7 y 8",
+        "ejercicios": [
+          { "operacion": "7x1", "respuesta": 7 },
+          { "operacion": "7x2", "respuesta": 14 },
+          { "operacion": "7x3", "respuesta": 21 },
+          { "operacion": "7x4", "respuesta": 28 },
+          { "operacion": "7x5", "respuesta": 35 },
+          { "operacion": "8x1", "respuesta": 8 },
+          { "operacion": "8x2", "respuesta": 16 },
+          { "operacion": "8x3", "respuesta": 24 },
+          { "operacion": "8x4", "respuesta": 32 },
+          { "operacion": "8x5", "respuesta": 40 },
+          { "operacion": "7x6", "respuesta": 42 },
+          { "operacion": "7x7", "respuesta": 49 },
+          { "operacion": "8x6", "respuesta": 48 },
+          { "operacion": "8x7", "respuesta": 56 },
+          { "operacion": "7x8", "respuesta": 56 }
+        ]
+      },
+      {
+        "id": 2,
+        "nombre": "Práctica 2 - Tablas 7 y 8",
+        "ejercicios": [
+          { "operacion": "7x9", "respuesta": 63 },
+          { "operacion": "7x10", "respuesta": 70 },
+          { "operacion": "7x11", "respuesta": 77 },
+          { "operacion": "7x12", "respuesta": 84 },
+          { "operacion": "8x8", "respuesta": 64 },
+          { "operacion": "8x9", "respuesta": 72 },
+          { "operacion": "8x10", "respuesta": 80 },
+          { "operacion": "8x11", "respuesta": 88 },
+          { "operacion": "8x12", "respuesta": 96 },
+          { "operacion": "7x6", "respuesta": 42 },
+          { "operacion": "8x7", "respuesta": 56 },
+          { "operacion": "7x3", "respuesta": 21 },
+          { "operacion": "8x4", "respuesta": 32 },
+          { "operacion": "7x5", "respuesta": 35 },
+          { "operacion": "8x6", "respuesta": 48 }
+        ]
+      },
+      {
+        "id": 3,
+        "nombre": "Práctica 3 - Tabla del 9",
+        "ejercicios": [
+          { "operacion": "9x1", "respuesta": 9 },
+  

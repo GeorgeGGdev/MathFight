@@ -1,0 +1,222 @@
+{
+    "practicas": [
+      {
+        "id": 1,
+        "nivel": "fácil",
+        "ejercicios": [
+          { "pregunta": "12 + 5 =", "respuesta": 17 },
+          { "pregunta": "8 + 9 =", "respuesta": 17 },
+          { "pregunta": "15 - 3 =", "respuesta": 12 },
+          { "pregunta": "10 + 4 =", "respuesta": 14 },
+          { "pregunta": "14 - 5 =", "respuesta": 9 },
+          { "pregunta": "7 + 6 =", "respuesta": 13 },
+          { "pregunta": "19 - 2 =", "respuesta": 17 },
+          { "pregunta": "11 + 8 =", "respuesta": 19 },
+          { "pregunta": "20 - 7 =", "respuesta": 13 },
+          { "pregunta": "6 + 12 =", "respuesta": 18 },
+          { "pregunta": "9 + 9 =", "respuesta": 18 },
+          { "pregunta": "18 - 4 =", "respuesta": 14 },
+          { "pregunta": "16 + 3 =", "respuesta": 19 },
+          { "pregunta": "13 - 6 =", "respuesta": 7 },
+          { "pregunta": "4 + 15 =", "respuesta": 19 }
+        ]
+      },
+      {
+        "id": 2,
+        "nivel": "fácil",
+        "ejercicios": [
+          { "pregunta": "17 - 5 =", "respuesta": 12 },
+          { "pregunta": "23 - 3 =", "respuesta": 20 },
+          { "pregunta": "14 + 4 =", "respuesta": 18 },
+          { "pregunta": "22 - 11 =", "respuesta": 11 },
+          { "pregunta": "10 + 13 =", "respuesta": 23 },
+          { "pregunta": "16 - 9 =", "respuesta": 7 },
+          { "pregunta": "21 - 6 =", "respuesta": 15 },
+          { "pregunta": "12 + 7 =", "respuesta": 19 },
+          { "pregunta": "18 - 5 =", "respuesta": 13 },
+          { "pregunta": "9 + 14 =", "respuesta": 23 },
+          { "pregunta": "13 - 4 =", "respuesta": 9 },
+          { "pregunta": "5 + 15 =", "respuesta": 20 },
+          { "pregunta": "8 + 12 =", "respuesta": 20 },
+          { "pregunta": "20 - 1 =", "respuesta": 19 },
+          { "pregunta": "17 - 9 =", "respuesta": 8 }
+        ]
+      },
+      {
+        "id": 3,
+        "nivel": "fácil",
+        "ejercicios": [
+          { "pregunta": "24 - 3 =", "respuesta": 21 },
+          { "pregunta": "13 + 5 =", "respuesta": 18 },
+          { "pregunta": "25 - 10 =", "respuesta": 15 },
+          { "pregunta": "9 + 18 =", "respuesta": 27 },
+          { "pregunta": "16 - 4 =", "respuesta": 12 },
+          { "pregunta": "7 + 22 =", "respuesta": 29 },
+          { "pregunta": "11 + 14 =", "respuesta": 25 },
+          { "pregunta": "23 - 12 =", "respuesta": 11 },
+          { "pregunta": "14 + 6 =", "respuesta": 20 },
+          { "pregunta": "26 - 1 =", "respuesta": 25 },
+          { "pregunta": "18 - 7 =", "respuesta": 11 },
+          { "pregunta": "27 - 9 =", "respuesta": 18 },
+          { "pregunta": "15 + 12 =", "respuesta": 27 },
+          { "pregunta": "28 - 4 =", "respuesta": 24 },
+          { "pregunta": "19 + 10 =", "respuesta": 29 }
+        ]
+      },
+  
+      {
+        "id": 4,
+        "nivel": "intermedio",
+        "ejercicios": [
+          { "pregunta": "35 - 12 =", "respuesta": 23 },
+          { "pregunta": "22 + 17 =", "respuesta": 39 },
+          { "pregunta": "45 - 20 =", "respuesta": 25 },
+          { "pregunta": "18 + 16 =", "respuesta": 34 },
+          { "pregunta": "50 - 14 =", "respuesta": 36 },
+          { "pregunta": "29 + 11 =", "respuesta": 40 },
+          { "pregunta": "41 - 8 =", "respuesta": 33 },
+          { "pregunta": "25 + 14 =", "respuesta": 39 },
+          { "pregunta": "36 - 15 =", "respuesta": 21 },
+          { "pregunta": "33 + 12 =", "respuesta": 45 },
+          { "pregunta": "52 - 13 =", "respuesta": 39 },
+          { "pregunta": "19 + 21 =", "respuesta": 40 },
+          { "pregunta": "49 - 9 =", "respuesta": 40 },
+          { "pregunta": "30 + 19 =", "respuesta": 49 },
+          { "pregunta": "47 - 6 =", "respuesta": 41 }
+        ]
+      },
+  
+      {
+        "id": 5,
+        "nivel": "intermedio",
+        "ejercicios": [
+          { "pregunta": "28 + 27 =", "respuesta": 55 },
+          { "pregunta": "53 - 14 =", "respuesta": 39 },
+          { "pregunta": "34 + 10 =", "respuesta": 44 },
+          { "pregunta": "60 - 15 =", "respuesta": 45 },
+          { "pregunta": "23 + 32 =", "respuesta": 55 },
+          { "pregunta": "55 - 25 =", "respuesta": 30 },
+          { "pregunta": "39 + 11 =", "respuesta": 50 },
+          { "pregunta": "42 - 18 =", "respuesta": 24 },
+          { "pregunta": "27 + 18 =", "respuesta": 45 },
+          { "pregunta": "48 - 19 =", "respuesta": 29 },
+          { "pregunta": "21 + 34 =", "respuesta": 55 },
+          { "pregunta": "59 - 11 =", "respuesta": 48 },
+          { "pregunta": "30 + 29 =", "respuesta": 59 },
+          { "pregunta": "57 - 26 =", "respuesta": 31 },
+          { "pregunta": "33 + 22 =", "respuesta": 55 }
+        ]
+      },
+  
+      {
+        "id": 6,
+        "nivel": "intermedio",
+        "ejercicios": [
+          { "pregunta": "46 - 15 =", "respuesta": 31 },
+          { "pregunta": "33 + 28 =", "respuesta": 61 },
+          { "pregunta": "50 - 13 =", "respuesta": 37 },
+          { "pregunta": "42 + 19 =", "respuesta": 61 },
+          { "pregunta": "60 - 21 =", "respuesta": 39 },
+          { "pregunta": "28 + 33 =", "respuesta": 61 },
+          { "pregunta": "57 - 8 =", "respuesta": 49 },
+          { "pregunta": "13 + 47 =", "respuesta": 60 },
+          { "pregunta": "61 - 19 =", "respuesta": 42 },
+          { "pregunta": "29 + 30 =", "respuesta": 59 },
+          { "pregunta": "38 + 20 =", "respuesta": 58 },
+          { "pregunta": "62 - 15 =", "respuesta": 47 },
+          { "pregunta": "25 + 36 =", "respuesta": 61 },
+          { "pregunta": "63 - 22 =", "respuesta": 41 },
+          { "pregunta": "45 + 15 =", "respuesta": 60 }
+        ]
+      },
+  
+      {
+        "id": 7,
+        "nivel": "difícil",
+        "ejercicios": [
+          { "pregunta": "72 - 25 =", "respuesta": 47 },
+          { "pregunta": "45 + 37 =", "respuesta": 82 },
+          { "pregunta": "90 - 41 =", "respuesta": 49 },
+          { "pregunta": "63 + 22 =", "respuesta": 85 },
+          { "pregunta": "98 - 33 =", "respuesta": 65 },
+          { "pregunta": "28 + 56 =", "respuesta": 84 },
+          { "pregunta": "71 - 19 =", "respuesta": 52 },
+          { "pregunta": "67 + 14 =", "respuesta": 81 },
+          { "pregunta": "86 - 29 =", "respuesta": 57 },
+          { "pregunta": "53 + 38 =", "respuesta": 91 },
+          { "pregunta": "95 - 17 =", "respuesta": 78 },
+          { "pregunta": "82 - 24 =", "respuesta": 58 },
+          { "pregunta": "64 + 25 =", "respuesta": 89 },
+          { "pregunta": "77 - 19 =", "respuesta": 58 },
+          { "pregunta": "42 + 49 =", "respuesta": 91 }
+        ]
+      },
+  
+      {
+        "id": 8,
+        "nivel": "difícil",
+        "ejercicios": [
+          { "pregunta": "84 - 23 =", "respuesta": 61 },
+          { "pregunta": "39 + 47 =", "respuesta": 86 },
+          { "pregunta": "56 + 35 =", "respuesta": 91 },
+          { "pregunta": "97 - 32 =", "respuesta": 65 },
+          { "pregunta": "25 + 68 =", "respuesta": 93 },
+          { "pregunta": "88 - 27 =", "respuesta": 61 },
+          { "pregunta": "73 + 18 =", "respuesta": 91 },
+          { "pregunta": "94 - 15 =", "respuesta": 79 },
+          { "pregunta": "63 + 29 =", "respuesta": 92 },
+          { "pregunta": "81 - 19 =", "respuesta": 62 },
+          { "pregunta": "57 + 34 =", "respuesta": 91 },
+          { "pregunta": "95 - 41 =", "respuesta": 54 },
+          { "pregunta": "79 + 18 =", "respuesta": 97 },
+          { "pregunta": "64 + 17 =", "respuesta": 81 },
+          { "pregunta": "92 - 56 =", "respuesta": 36 }
+        ]
+      },
+  
+      {
+        "id": 9,
+        "nivel": "difícil",
+        "ejercicios": [
+          { "pregunta": "86 - 49 =", "respuesta": 37 },
+          { "pregunta": "58 + 39 =", "respuesta": 97 },
+          { "pregunta": "91 - 47 =", "respuesta": 44 },
+          { "pregunta": "64 + 31 =", "respuesta": 95 },
+          { "pregunta": "88 - 61 =", "respuesta": 27 },
+          { "pregunta": "43 + 52 =", "respuesta": 95 },
+          { "pregunta": "72 - 18 =", "respuesta": 54 },
+          { "pregunta": "57 + 29 =", "respuesta": 86 },
+          { "pregunta": "66 - 42 =", "respuesta": 24 },
+          { "pregunta": "38 + 47 =", "respuesta": 85 },
+          { "pregunta": "99 - 15 =", "respuesta": 84 },
+          { "pregunta": "67 - 23 =", "respuesta": 44 },
+          { "pregunta": "59 + 28 =", "respuesta": 87 },
+          { "pregunta": "83 - 29 =", "respuesta": 54 },
+          { "pregunta": "35 + 62 =", "respuesta": 97 }
+        ]
+      },
+  
+      {
+        "id": 10,
+        "nivel": "difícil",
+        "ejercicios": [
+          { "pregunta": "79 - 36 =", "respuesta": 43 },
+          { "pregunta": "65 + 29 =", "respuesta": 94 },
+          { "pregunta": "98 - 52 =", "respuesta": 46 },
+          { "pregunta": "47 + 46 =", "respuesta": 93 },
+          { "pregunta": "73 - 25 =", "respuesta": 48 },
+          { "pregunta": "54 + 39 =", "respuesta": 93 },
+          { "pregunta": "92 - 49 =", "respuesta": 43 },
+          { "pregunta": "48 + 41 =", "respuesta": 89 },
+          { "pregunta": "83 - 31 =", "respuesta": 52 },
+          { "pregunta": "64 + 35 =", "respuesta": 99 },
+          { "pregunta": "76 - 18 =", "respuesta": 58 },
+          { "pregunta": "29 + 64 =", "respuesta": 93 },
+          { "pregunta": "51 + 47 =", "respuesta": 98 },
+          { "pregunta": "97 - 18 =", "respuesta": 79 },
+          { "pregunta": "69 + 28 =", "respuesta": 97 }
+        ]
+      }
+    ]
+  }
+  
