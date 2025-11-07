@@ -26,7 +26,7 @@
     }
     .coach-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 42px rgba(13,22,48,.14); }
     .coach-head{ display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 18px; padding: 20px; }
-    .coach-img{ width: 100%; aspect-ratio: 1/1; object-fit: contain; filter: drop-shadow(0 16px 28px rgba(0,0,0,.14)); }
+    .coach-img{ width: 500px; aspect-ratio: 1/1; object-fit: contain; filter: drop-shadow(0 16px 28px rgba(0,0,0,.14)); }
     .coach-title{ font-family:"Fredoka One"; font-size: clamp(28px,3.6vw,36px); margin: 4px 0 4px; }
     .coach-sub{ font-family:"Fredoka"; color:#2a3f6b; font-weight: 700; font-size: 18px; }
     .coach-chips{ display:flex; gap:10px; margin-top:10px; flex-wrap: wrap; }
@@ -47,11 +47,80 @@
 
     .acc-inner{ padding: 16px 4px 6px; }
     .acc-media{ display:flex; gap:16px; align-items:flex-start; margin-bottom: 12px; flex-wrap: wrap; }
-    .real-img{ width: 100%; max-width: 520px; border-radius: 16px; box-shadow: 0 16px 32px rgba(13,22,48,.14); border: 1px solid rgba(13,22,48,.08); }
+    .real-img{ 
+        width: 100%; 
+        max-width: 520px; 
+        border-radius: 16px; 
+        box-shadow: 0 16px 32px rgba(13,22,48,.14); 
+        border: 1px solid rgba(13,22,48,.08);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .real-img:hover{
+        transform: scale(1.03);
+        box-shadow: 0 20px 40px rgba(13,22,48,.2);
+    }
+    .acc-text{
+        flex: 1;
+        min-width: 200px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .acc-media:hover .acc-text{
+        transform: translateX(4px);
+    }
     .acc-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .acc-block{ background:#ffffff; border:1px solid rgba(13,22,48,.08); border-radius:16px; padding:12px 14px; box-shadow:0 10px 22px rgba(13,22,48,.08); }
-    .acc-block h4{ font-family:"Fredoka One"; margin:4px 0 6px; font-size:18px; }
-    .acc-block p{ margin:0; color:#28406f; line-height:1.7; font-family:"Fredoka"; font-size: 16px; }
+    .acc-block{ 
+        background:#ffffff; 
+        border:1px solid rgba(13,22,48,.08); 
+        border-radius:16px; 
+        padding:12px 14px; 
+        box-shadow:0 10px 22px rgba(13,22,48,.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .acc-block::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s ease;
+    }
+    .acc-block:hover{
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 16px 32px rgba(13,22,48,.15);
+        background: linear-gradient(135deg, #ffffff, #f8faff);
+    }
+    .acc-block:hover::before{
+        left: 100%;
+    }
+    .acc-block h4{ 
+        font-family:"Fredoka One"; 
+        margin:4px 0 6px; 
+        font-size:18px;
+        transition: color 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+    .acc-block:hover h4{
+        color: #1a4d9e;
+    }
+    .acc-block p{ 
+        margin:0; 
+        color:#28406f; 
+        line-height:1.7; 
+        font-family:"Fredoka"; 
+        font-size: 16px;
+        transition: color 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+    .acc-block:hover p{
+        color: #1e3a66;
+    }
     @media (max-width: 720px){ .acc-grid{ grid-template-columns: 1fr; } .real-img{ max-width: 100%; } }
 
     /* Acentos laterales por tarjeta */
@@ -108,7 +177,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Olingo de Chiriquí" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Bassaricyon_gabbii.jpg">
+                                <img class="real-img" alt="Olingo de Chiriquí" src="img/animals/olingo.jpg">
                                 <p class="acc-text">El olingo de Chiriquí es un mamífero arborícola sigiloso y curioso que habita el dosel de los bosques nubosos. Su agilidad le permite desplazarse entre ramas con gran precisión y aprovechar frutos y néctar durante la noche. Aunque es discreto, cumple un rol importante en la dispersión de semillas y en el equilibrio del ecosistema altoandino.</p>
                             </div>
                             <div class="acc-grid">
@@ -139,7 +208,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Rana dorada panameña" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Atelopus_zeteki2.jpg">
+                                <img class="real-img" alt="Rana dorada panameña" src="img/animals/rana-dorada.jpg">
                                 <p class="acc-text">La rana dorada es un icono de Panamá: su color brillante advierte sobre sus toxinas defensivas. Vive cerca de arroyos de agua clara donde sus señales visuales y movimientos se aprecian con facilidad. Su historia también enseña sobre conservación y ciencia, pues enfrenta amenazas y es protegida en programas especiales.</p>
                             </div>
                             <div class="acc-grid">
@@ -170,7 +239,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Tortuga morrocoy" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Chelonoidis_carbonarius_01.jpg">
+                                <img class="real-img" alt="Tortuga morrocoy" src="img/animals/morrocoy-tortuga.jpg">
                                 <p class="acc-text">La morrocoy es paciente y resistente. Su caparazón alto la protege y le permite llevar un ritmo tranquilo, perfecto para enseñar constancia. En ecosistemas de sabanas y bosques secos, cumple un papel clave dispersando semillas y manteniendo la vegetación.</p>
                             </div>
                             <div class="acc-grid">
@@ -201,7 +270,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Perezoso de dos dedos" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Choloepus_hoffmanni.jpg">
+                                <img class="real-img" alt="Perezoso de dos dedos" src="img/animals/perezoso.jpg">
                                 <p class="acc-text">El perezoso de dos dedos es un maestro de la calma. Su cuerpo está adaptado a colgar de los árboles con garras fuertes, y su pelaje puede albergar algas que lo camuflan. Enseña que el aprendizaje también necesita pausas y que la constancia gana carreras largas.</p>
                             </div>
                             <div class="acc-grid">
@@ -232,7 +301,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Jaguar panameño" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Standing_jaguar.jpg">
+                                <img class="real-img" alt="Jaguar panameño" src="img/animals/jaguar.jpg">
                                 <p class="acc-text">El jaguar es el gran felino de América. Fuerte y sigiloso, caza con precisión y destaca por su mordida poderosa. En Panamá ocupa desde selvas densa hasta áreas ribereñas, siendo fundamental para mantener el equilibrio de las poblaciones de presas.</p>
                             </div>
                             <div class="acc-grid">
@@ -263,7 +332,7 @@
                     <div class="coach-body">
                         <div class="accordion"><div class="acc-inner">
                             <div class="acc-media">
-                                <img class="real-img" alt="Águila arpía" src="https://wildexpedition.com/es/pajaro/aguila-harpia/">
+                                <img class="real-img" alt="Águila arpía" src="img/animals/aguila-arpia.jpg">
                                 <p class="acc-text">La águila arpía es una de las rapaces más poderosas del mundo. Sus garras gigantes y su vista aguda la convierten en una cazadora extraordinaria. En Panamá es símbolo nacional y un recordatorio del valor de proteger nuestros bosques.</p>
                             </div>
                             <div class="acc-grid">

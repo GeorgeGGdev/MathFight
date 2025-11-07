@@ -51,11 +51,11 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 90px;
     animation: navContainerFadeIn 0.8s ease-out 0.2s both;
 }
 
@@ -76,7 +76,7 @@ body {
 }
 
 .brand-logo {
-    height:80px;
+    height: 100px;
     width: auto;
     display: block;
 }
@@ -141,11 +141,11 @@ body {
     background-color: #4c4f4e;
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 25px;
     font-family: 'Fredoka', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -214,7 +214,7 @@ body {
 
 .main-content h1 {
     font-family: 'Fredoka One', cursive;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #CC2936;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -676,7 +676,7 @@ body {
     .nav-container {
         flex-direction: column;
         height: auto;
-        padding: 15px 20px;
+        padding: 18px 20px;
     }
     
     .nav-menu {
@@ -685,19 +685,27 @@ body {
         justify-content: center;
     }
     
+    .brand-logo {
+        height: 85px;
+    }
+    
     .brand-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .nav-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        padding: 12px 24px;
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    .brand-logo {
+        height: 75px;
+    }
+    
     .brand-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .nav-menu {
@@ -705,7 +713,7 @@ body {
     }
     
     .nav-button {
-        padding: 8px 16px;
-        font-size: 0.8rem;
+        padding: 10px 20px;
+        font-size: 0.95rem;
     }
 }

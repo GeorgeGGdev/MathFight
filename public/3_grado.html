@@ -6,6 +6,135 @@
     <title>MathFight</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --c-red:#ff3b3b; --c-blue:#2ec5ff; --c-yellow:#ffd23f; --c-mint:#3af2b7; --c-pink:#ff7ac6; --c-ink:#0d1630;
+        --c-green:#4ade80;
+    }
+    body{ background: radial-gradient(1200px 800px at 50% -200px, #eef7ff 0%, #f7fbff 70%, #ffffff 100%); color: var(--c-ink); }
+    .page-wrap{ max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+    
+    .page-title{ 
+        font-family: "Fredoka One"; 
+        font-size: clamp(28px,4.4vw,48px); 
+        margin: 8px 0 24px; 
+        background: linear-gradient(90deg,#0a1330,#2a7fff); 
+        -webkit-background-clip:text; 
+        background-clip:text; 
+        color:transparent; 
+        text-align: center;
+    }
+    
+    .training-section{
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .training-divider{
+        font-family: "Fredoka One";
+        font-size: clamp(20px, 3vw, 24px);
+        margin: 32px 0 16px;
+        padding: 12px 20px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(13,22,48,.1);
+    }
+    
+    .divider-green{
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        color: #065f46;
+        border: 2px solid #34d399;
+    }
+    
+    .divider-yellow{
+        background: linear-gradient(135deg, #fef9c3, #fef08a);
+        color: #713f12;
+        border: 2px solid #facc15;
+    }
+    
+    .divider-red{
+        background: linear-gradient(135deg, #fee2e2, #fecaca);
+        color: #991b1b;
+        border: 2px solid #f87171;
+    }
+    
+    .training-list{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .training-btn{
+        font-family: "Fredoka";
+        font-weight: 600;
+        font-size: clamp(18px, 2.5vw, 22px);
+        padding: 18px 24px;
+        border-radius: 16px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        box-shadow: 0 8px 20px rgba(13,22,48,.12);
+        position: relative;
+        overflow: hidden;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .training-btn::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+    }
+    
+    .training-btn:hover{
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 28px rgba(13,22,48,.18);
+    }
+    
+    .training-btn:hover::before{
+        left: 100%;
+    }
+    
+    .training-btn-green{
+        background: linear-gradient(135deg, #86efac, #4ade80);
+        color: #065f46;
+        border: 2px solid #34d399;
+    }
+    
+    .training-btn-green:hover{
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+        box-shadow: 0 12px 28px rgba(52,211,153,.3);
+    }
+    
+    .training-btn-yellow{
+        background: linear-gradient(135deg, #fde047, #facc15);
+        color: #713f12;
+        border: 2px solid #facc15;
+    }
+    
+    .training-btn-yellow:hover{
+        background: linear-gradient(135deg, #facc15, #eab308);
+        box-shadow: 0 12px 28px rgba(250,204,21,.3);
+    }
+    
+    .training-btn-red{
+        background: linear-gradient(135deg, #f87171, #ef4444);
+        color: #7f1d1d;
+        border: 2px solid #ef4444;
+    }
+    
+    .training-btn-red:hover{
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        box-shadow: 0 12px 28px rgba(239,68,68,.3);
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -22,12 +151,34 @@
         </div>
     </nav>
 
-    <div class="container">
-        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTOM24l0nejO5sJhAqO8ZGyHNdOhZKKmN9ANE11m6J3NVxRKp2XndOzWE0X7GyFwm77oQ2w-U9LlfkDtcvpEpObTappBviuJOSdnN62uajP_kjQZR8Pf6N9Ps0TYm_D5YOjCelbekVa8VZf&s=19" alt="3 Grado"> 
-    </div>
-
     <main class="main-content">
-        <h1>3 Grado</h1>
+        <div class="page-wrap">
+            <h1 class="page-title">3 Grado</h1>
+            
+            <div class="training-section">
+                <div class="training-divider divider-green">Empieza con lo básico</div>
+                <div class="training-list">
+                    <button class="training-btn training-btn-green">Entrenamiento 1</button>
+                    <button class="training-btn training-btn-green">Entrenamiento 2</button>
+                    <button class="training-btn training-btn-green">Entrenamiento 3</button>
+                </div>
+                
+                <div class="training-divider divider-yellow">Ponte a prueba</div>
+                <div class="training-list">
+                    <button class="training-btn training-btn-yellow">Entrenamiento 4</button>
+                    <button class="training-btn training-btn-yellow">Entrenamiento 5</button>
+                    <button class="training-btn training-btn-yellow">Entrenamiento 6</button>
+                </div>
+                
+                <div class="training-divider divider-red">Veamos si llegas a ser campeón</div>
+                <div class="training-list">
+                    <button class="training-btn training-btn-red">Entrenamiento 7</button>
+                    <button class="training-btn training-btn-red">Entrenamiento 8</button>
+                    <button class="training-btn training-btn-red">Entrenamiento 9</button>
+                    <button class="training-btn training-btn-red">Entrenamiento 10</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
