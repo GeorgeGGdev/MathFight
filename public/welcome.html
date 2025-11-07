@@ -194,6 +194,21 @@
                 userName = nameInput.value.trim();
                 
                 if (userName) {
+                    // Guardar el nombre en localStorage
+                    localStorage.setItem('mathfight_username', userName);
+                    
+                    // Inicializar el usuario en el ranking si no existe
+                    let ranking = JSON.parse(localStorage.getItem('mathfight_ranking') || '[]');
+                    const userExists = ranking.find(u => u.name === userName);
+                    
+                    if (!userExists) {
+                        ranking.push({
+                            name: userName,
+                            medals: 0
+                        });
+                        localStorage.setItem('mathfight_ranking', JSON.stringify(ranking));
+                    }
+                    
                     currentStep++;
                     updateModalContent();
                 } else {

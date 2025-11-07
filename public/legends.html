@@ -8,29 +8,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <style>
     :root{
-        --lx-ink:#0b0e1a; --lx-card:#12172b; --lx-soft:#1a2140; --lx-red:#ff3b3b; --lx-gold:#ffd23f; --lx-blue:#2ec5ff; --lx-white:#ffffff;
+        --lx-gold:#fbbf24; 
+        --lx-gold-light:#fde68a; 
+        --lx-gold-dark:#f59e0b;
+        --lx-black:#0a0a0a; 
+        --lx-gray:#1a1a1a;
+        --lx-gray-light:#2a2a2a;
     }
-    body{ background: radial-gradient(1200px 800px at 50% -200px, #0e1326 0%, #090c1c 50%, #070913 100%); color:#e7eeff; }
-    .wrap{ max-width: 1100px; margin: 0 auto; padding: 32px 20px 64px; }
-    .title{ font-family:"Fredoka One"; font-size: clamp(28px,4.4vw,50px); margin: 8px 0 4px; background: linear-gradient(90deg, #e9eefc, #ffd23f, #ff3b3b); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .sub{ font-family:"Fredoka"; color:#a8b6d9; margin-bottom: 18px; }
+    body{ 
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%); 
+        color:#fde68a; 
+    }
+    .wrap{ 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 60px 20px 80px; 
+    }
+    .page-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    .title{ 
+        font-family:"Fredoka One"; 
+        font-size: clamp(40px,5vw,64px); 
+        margin: 0 0 20px; 
+        background: linear-gradient(135deg, var(--lx-gold), var(--lx-gold-dark)); 
+        -webkit-background-clip:text; 
+        background-clip:text; 
+        color:transparent;
+        text-shadow: 0 0 40px rgba(251,191,36,0.3);
+    }
+    .sub{ 
+        font-family:"Fredoka"; 
+        color:#d1d5db; 
+        font-size: clamp(16px, 2vw, 20px);
+        margin-bottom: 20px; 
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .legend-grid{ display:grid; grid-template-columns: 1fr; gap: 22px; }
     .legend-card{
-        position: relative; border-radius: 20px; overflow: hidden; cursor: pointer;
-        background: linear-gradient(180deg, var(--lx-card), var(--lx-soft));
-        border: 1px solid rgba(255,210,63,.18);
-        box-shadow: 0 18px 44px rgba(0,0,0,.35), 0 0 0 2px rgba(255,210,63,.08) inset, 0 0 32px rgba(255,210,63,.06) inset;
-        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+        position: relative; 
+        border-radius: 32px; 
+        overflow: hidden; 
+        cursor: pointer;
+        background: var(--lx-gray);
+        border: 3px solid var(--lx-gold);
+        box-shadow: 0 20px 40px rgba(0,0,0,.5), 0 0 40px rgba(251,191,36,.2);
+        transition: all .3s ease;
+        margin-bottom: 30px;
     }
-    .legend-card:hover{ transform: translateY(-6px); filter: saturate(1.05); box-shadow: 0 22px 56px rgba(0,0,0,.45), 0 0 0 2px rgba(255,255,255,.04) inset; }
+    .legend-card:hover{ 
+        transform: translateY(-8px); 
+        box-shadow: 0 30px 60px rgba(0,0,0,.6), 0 0 60px rgba(251,191,36,.4);
+        border-color: var(--lx-gold-light);
+    }
 
     .lx-head{ display:grid; grid-template-columns: 1.2fr .8fr; align-items:center; gap:18px; padding: 20px; }
-    .lx-name{ font-family:"Fredoka One"; font-size: clamp(26px,3.6vw,38px); margin: 0; }
-    .lx-sub{ font-family:"Fredoka"; color:#c2cff3; font-weight:700; margin-top: 6px; }
+    .lx-name{ 
+        font-family:"Fredoka One"; 
+        font-size: clamp(28px,4vw,42px); 
+        margin: 0;
+        background: linear-gradient(135deg, var(--lx-gold), var(--lx-gold-dark)); 
+        -webkit-background-clip:text; 
+        background-clip:text; 
+        color:transparent;
+    }
+    .lx-sub{ 
+        font-family:"Fredoka"; 
+        color:#d1d5db; 
+        font-weight:700; 
+        margin-top: 8px;
+        font-size: 18px;
+    }
     .lx-chips{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px; }
-    .lx-chip{ padding:8px 12px; border-radius:999px; font-weight:700; font-family:"Fredoka"; font-size:13px; border:1px solid rgba(255,210,63,.35); background: linear-gradient(180deg, rgba(255,210,63,.18), rgba(255,210,63,.08)); color:#ffeaa0; }
-    .belt{ color:#0b0e1a; background: linear-gradient(180deg,#ffe98a,#ffcc3d); border:0; box-shadow: 0 6px 16px rgba(255,210,63,.45); }
+    .lx-chip{ 
+        padding:10px 16px; 
+        border-radius:999px; 
+        font-weight:700; 
+        font-family:"Fredoka"; 
+        font-size:14px; 
+        border:2px solid var(--lx-gold); 
+        background: rgba(251,191,36,.1); 
+        color:var(--lx-gold-light);
+        transition: all 0.3s ease;
+    }
+    .lx-chip:hover {
+        background: var(--lx-gold);
+        color: var(--lx-black);
+    }
+    .belt{ 
+        color:var(--lx-black); 
+        background: linear-gradient(135deg, var(--lx-gold), var(--lx-gold-dark)); 
+        border:0; 
+        box-shadow: 0 6px 16px rgba(251,191,36,.5);
+        font-weight: 800;
+    }
 
     .lx-portrait{ width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 14px; box-shadow: 0 14px 28px rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.08); }
 
@@ -41,15 +116,71 @@
     .lx-intro p{ margin:0; line-height:1.7; color:#cbd6fb; font-family:"Fredoka"; }
 
     .lx-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .lx-block{ background: linear-gradient(180deg, rgba(255,210,63,.12), rgba(255,210,63,.06)); border:1px solid rgba(255,210,63,.28); border-radius: 14px; padding: 12px 14px; box-shadow: 0 8px 18px rgba(0,0,0,.28), 0 0 24px rgba(255,210,63,.05) inset; }
-    .lx-block h4{ font-family:"Fredoka One"; margin: 4px 0 6px; font-size: 18px; color:#fff; text-shadow: 0 2px 0 rgba(0,0,0,.25); }
-    .lx-block p{ margin:0; color:#f3f5ff; font-family:"Fredoka"; line-height:1.7; }
+    .lx-block{ 
+        background: var(--lx-gray-light); 
+        border:2px solid var(--lx-gold); 
+        border-radius: 20px; 
+        padding: 20px; 
+        box-shadow: 0 8px 20px rgba(0,0,0,.4), 0 0 20px rgba(251,191,36,.1) inset;
+        transition: all 0.3s ease;
+    }
+    .lx-block:hover {
+        background: rgba(251,191,36,.05);
+        box-shadow: 0 12px 30px rgba(0,0,0,.5), 0 0 30px rgba(251,191,36,.2) inset;
+    }
+    .lx-block h4{ 
+        font-family:"Fredoka One"; 
+        margin: 0 0 10px; 
+        font-size: 20px; 
+        color:var(--lx-gold); 
+    }
+    .lx-block p{ 
+        margin:0; 
+        color:#d1d5db; 
+        font-family:"Fredoka"; 
+        line-height:1.7;
+        font-size: 16px;
+    }
     @media (max-width: 760px){ .lx-grid{ grid-template-columns: 1fr; } }
 
-    .tagline{ font-family:"Fredoka"; color:#0b0e1a; font-weight:800; text-transform: uppercase; letter-spacing:.6px; padding: 12px 18px; background: linear-gradient(180deg,#ffe98a,#ffcc3d); border-radius: 14px; box-shadow: 0 10px 28px rgba(255,210,63,.35); display:inline-block; }
+    .tagline{ 
+        font-family:"Fredoka One"; 
+        color:var(--lx-black); 
+        font-weight:800; 
+        text-transform: uppercase; 
+        letter-spacing:1px; 
+        padding: 16px 32px; 
+        background: linear-gradient(135deg, var(--lx-gold), var(--lx-gold-dark)); 
+        border-radius: 20px; 
+        box-shadow: 0 10px 30px rgba(251,191,36,.5); 
+        display:inline-block;
+        font-size: 18px;
+    }
 
-    .chev{ position:absolute; right:16px; top:16px; width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; font-size:18px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 4px 10px rgba(0,0,0,.3); transition: transform .3s ease; color:#fff; }
-    .legend-card.open .chev{ transform: rotate(180deg); }
+    .chev{ 
+        position:absolute; 
+        right:20px; 
+        top:20px; 
+        width: 44px; 
+        height: 44px; 
+        border-radius: 50%; 
+        display:grid; 
+        place-items:center; 
+        font-size:20px; 
+        background: var(--lx-gold); 
+        border: 2px solid var(--lx-gold-dark); 
+        box-shadow: 0 4px 12px rgba(251,191,36,.4); 
+        transition: all .3s ease; 
+        color:var(--lx-black);
+        font-weight: 900;
+    }
+    .chev:hover {
+        background: var(--lx-gold-light);
+        box-shadow: 0 6px 20px rgba(251,191,36,.6);
+    }
+    .legend-card.open .chev{ 
+        transform: rotate(180deg); 
+    }
 
     .accent-red{ box-shadow: 0 0 0 3px rgba(255,59,59,.26) inset; }
     .accent-gold{ box-shadow: 0 0 0 3px rgba(255,210,63,.26) inset; }
@@ -76,8 +207,10 @@
 
     <main class="main-content">
         <div class="wrap">
-            <h1 class="title">Hall of Fame Panameño</h1>
-            <p class="sub">Seis campeones que llevaron el boxeo panameño a lo más alto. Toca cada tarjeta para conocer sus logros, estilos y legado.</p>
+            <div class="page-header">
+                <h1 class="title">🥊 Hall of Fame Panameño</h1>
+                <p class="sub">Seis campeones que llevaron el boxeo panameño a lo más alto. Toca cada tarjeta para conocer sus logros, estilos y legado.</p>
+            </div>
 
             <div class="legend-grid">
                 <!-- Roberto Durán -->

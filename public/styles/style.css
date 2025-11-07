@@ -49,9 +49,9 @@ body {
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 20px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,6 +73,7 @@ body {
 .nav-brand {
     display: flex;
     align-items: center;
+    padding-left: 20px;
 }
 
 .brand-logo {
@@ -422,7 +423,7 @@ body {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 0.3s ease, transform 0.3s ease;
     animation: imageFadeIn 0.8s ease-out;
     position: relative;
     z-index: 2;

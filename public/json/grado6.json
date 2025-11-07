@@ -1,52 +1,220 @@
 {
-    "grado": 6,
-    "descripcion": "Prácticas de multiplicación con tablas del 7 al 12.",
-    "practicas": [
-      {
-        "id": 1,
-        "nombre": "Práctica 1 - Tablas 7 y 8",
-        "ejercicios": [
-          { "operacion": "7x1", "respuesta": 7 },
-          { "operacion": "7x2", "respuesta": 14 },
-          { "operacion": "7x3", "respuesta": 21 },
-          { "operacion": "7x4", "respuesta": 28 },
-          { "operacion": "7x5", "respuesta": 35 },
-          { "operacion": "8x1", "respuesta": 8 },
-          { "operacion": "8x2", "respuesta": 16 },
-          { "operacion": "8x3", "respuesta": 24 },
-          { "operacion": "8x4", "respuesta": 32 },
-          { "operacion": "8x5", "respuesta": 40 },
-          { "operacion": "7x6", "respuesta": 42 },
-          { "operacion": "7x7", "respuesta": 49 },
-          { "operacion": "8x6", "respuesta": 48 },
-          { "operacion": "8x7", "respuesta": 56 },
-          { "operacion": "7x8", "respuesta": 56 }
-        ]
-      },
-      {
-        "id": 2,
-        "nombre": "Práctica 2 - Tablas 7 y 8",
-        "ejercicios": [
-          { "operacion": "7x9", "respuesta": 63 },
-          { "operacion": "7x10", "respuesta": 70 },
-          { "operacion": "7x11", "respuesta": 77 },
-          { "operacion": "7x12", "respuesta": 84 },
-          { "operacion": "8x8", "respuesta": 64 },
-          { "operacion": "8x9", "respuesta": 72 },
-          { "operacion": "8x10", "respuesta": 80 },
-          { "operacion": "8x11", "respuesta": 88 },
-          { "operacion": "8x12", "respuesta": 96 },
-          { "operacion": "7x6", "respuesta": 42 },
-          { "operacion": "8x7", "respuesta": 56 },
-          { "operacion": "7x3", "respuesta": 21 },
-          { "operacion": "8x4", "respuesta": 32 },
-          { "operacion": "7x5", "respuesta": 35 },
-          { "operacion": "8x6", "respuesta": 48 }
-        ]
-      },
-      {
-        "id": 3,
-        "nombre": "Práctica 3 - Tabla del 9",
-        "ejercicios": [
-          { "operacion": "9x1", "respuesta": 9 },
-  
+  "grado": 6,
+  "descripcion": "Prácticas de multiplicación con tablas del 7 al 12.",
+  "practicas": [
+    {
+      "id": 1,
+      "nombre": "Práctica 1 - Tabla 7",
+      "ejercicios": [
+        { "operacion": "7x1", "respuesta": 7 },
+        { "operacion": "7x2", "respuesta": 14 },
+        { "operacion": "7x3", "respuesta": 21 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "7x5", "respuesta": 35 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "7x7", "respuesta": 49 },
+        { "operacion": "7x8", "respuesta": 56 },
+        { "operacion": "7x9", "respuesta": 63 },
+        { "operacion": "7x10", "respuesta": 70 },
+        { "operacion": "7x11", "respuesta": 77 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "7x3", "respuesta": 21 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "7x8", "respuesta": 56 }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Práctica 2 - Tabla 8",
+      "ejercicios": [
+        { "operacion": "8x1", "respuesta": 8 },
+        { "operacion": "8x2", "respuesta": 16 },
+        { "operacion": "8x3", "respuesta": 24 },
+        { "operacion": "8x4", "respuesta": 32 },
+        { "operacion": "8x5", "respuesta": 40 },
+        { "operacion": "8x6", "respuesta": 48 },
+        { "operacion": "8x7", "respuesta": 56 },
+        { "operacion": "8x8", "respuesta": 64 },
+        { "operacion": "8x9", "respuesta": 72 },
+        { "operacion": "8x10", "respuesta": 80 },
+        { "operacion": "8x11", "respuesta": 88 },
+        { "operacion": "8x12", "respuesta": 96 },
+        { "operacion": "8x4", "respuesta": 32 },
+        { "operacion": "8x7", "respuesta": 56 },
+        { "operacion": "8x9", "respuesta": 72 }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Práctica 3 - Tabla 9",
+      "ejercicios": [
+        { "operacion": "9x1", "respuesta": 9 },
+        { "operacion": "9x2", "respuesta": 18 },
+        { "operacion": "9x3", "respuesta": 27 },
+        { "operacion": "9x4", "respuesta": 36 },
+        { "operacion": "9x5", "respuesta": 45 },
+        { "operacion": "9x6", "respuesta": 54 },
+        { "operacion": "9x7", "respuesta": 63 },
+        { "operacion": "9x8", "respuesta": 72 },
+        { "operacion": "9x9", "respuesta": 81 },
+        { "operacion": "9x10", "respuesta": 90 },
+        { "operacion": "9x11", "respuesta": 99 },
+        { "operacion": "9x12", "respuesta": 108 },
+        { "operacion": "9x4", "respuesta": 36 },
+        { "operacion": "9x8", "respuesta": 72 },
+        { "operacion": "9x6", "respuesta": 54 }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Práctica 4 - Tabla 10",
+      "ejercicios": [
+        { "operacion": "10x1", "respuesta": 10 },
+        { "operacion": "10x2", "respuesta": 20 },
+        { "operacion": "10x3", "respuesta": 30 },
+        { "operacion": "10x4", "respuesta": 40 },
+        { "operacion": "10x5", "respuesta": 50 },
+        { "operacion": "10x6", "respuesta": 60 },
+        { "operacion": "10x7", "respuesta": 70 },
+        { "operacion": "10x8", "respuesta": 80 },
+        { "operacion": "10x9", "respuesta": 90 },
+        { "operacion": "10x10", "respuesta": 100 },
+        { "operacion": "10x11", "respuesta": 110 },
+        { "operacion": "10x12", "respuesta": 120 },
+        { "operacion": "10x3", "respuesta": 30 },
+        { "operacion": "10x6", "respuesta": 60 },
+        { "operacion": "10x9", "respuesta": 90 }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Práctica 5 - Tabla 11",
+      "ejercicios": [
+        { "operacion": "11x1", "respuesta": 11 },
+        { "operacion": "11x2", "respuesta": 22 },
+        { "operacion": "11x3", "respuesta": 33 },
+        { "operacion": "11x4", "respuesta": 44 },
+        { "operacion": "11x5", "respuesta": 55 },
+        { "operacion": "11x6", "respuesta": 66 },
+        { "operacion": "11x7", "respuesta": 77 },
+        { "operacion": "11x8", "respuesta": 88 },
+        { "operacion": "11x9", "respuesta": 99 },
+        { "operacion": "11x10", "respuesta": 110 },
+        { "operacion": "11x11", "respuesta": 121 },
+        { "operacion": "11x12", "respuesta": 132 },
+        { "operacion": "11x3", "respuesta": 33 },
+        { "operacion": "11x7", "respuesta": 77 },
+        { "operacion": "11x9", "respuesta": 99 }
+      ]
+    },
+    {
+      "id": 6,
+      "nombre": "Práctica 6 - Tabla 12",
+      "ejercicios": [
+        { "operacion": "12x1", "respuesta": 12 },
+        { "operacion": "12x2", "respuesta": 24 },
+        { "operacion": "12x3", "respuesta": 36 },
+        { "operacion": "12x4", "respuesta": 48 },
+        { "operacion": "12x5", "respuesta": 60 },
+        { "operacion": "12x6", "respuesta": 72 },
+        { "operacion": "12x7", "respuesta": 84 },
+        { "operacion": "12x8", "respuesta": 96 },
+        { "operacion": "12x9", "respuesta": 108 },
+        { "operacion": "12x10", "respuesta": 120 },
+        { "operacion": "12x11", "respuesta": 132 },
+        { "operacion": "12x12", "respuesta": 144 },
+        { "operacion": "12x4", "respuesta": 48 },
+        { "operacion": "12x7", "respuesta": 84 },
+        { "operacion": "12x8", "respuesta": 96 }
+      ]
+    },
+
+    {
+      "id": 7,
+      "nombre": "Práctica 7 - Mixta 7–9",
+      "ejercicios": [
+        { "operacion": "7x9", "respuesta": 63 },
+        { "operacion": "8x7", "respuesta": 56 },
+        { "operacion": "9x8", "respuesta": 72 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "9x11", "respuesta": 99 },
+        { "operacion": "8x6", "respuesta": 48 },
+        { "operacion": "7x4", "respuesta": 28 },
+        { "operacion": "9x3", "respuesta": 27 },
+        { "operacion": "8x12", "respuesta": 96 },
+        { "operacion": "9x9", "respuesta": 81 },
+        { "operacion": "7x6", "respuesta": 42 },
+        { "operacion": "8x10", "respuesta": 80 },
+        { "operacion": "9x5", "respuesta": 45 },
+        { "operacion": "7x8", "respuesta": 56 },
+        { "operacion": "9x12", "respuesta": 108 }
+      ]
+    },
+
+    {
+      "id": 8,
+      "nombre": "Práctica 8 - Mixta 9–11",
+      "ejercicios": [
+        { "operacion": "9x12", "respuesta": 108 },
+        { "operacion": "10x9", "respuesta": 90 },
+        { "operacion": "11x7", "respuesta": 77 },
+        { "operacion": "9x8", "respuesta": 72 },
+        { "operacion": "10x12", "respuesta": 120 },
+        { "operacion": "11x9", "respuesta": 99 },
+        { "operacion": "9x4", "respuesta": 36 },
+        { "operacion": "10x10", "respuesta": 100 },
+        { "operacion": "11x6", "respuesta": 66 },
+        { "operacion": "9x11", "respuesta": 99 },
+        { "operacion": "10x8", "respuesta": 80 },
+        { "operacion": "11x12", "respuesta": 132 },
+        { "operacion": "9x7", "respuesta": 63 },
+        { "operacion": "10x11", "respuesta": 110 },
+        { "operacion": "11x8", "respuesta": 88 }
+      ]
+    },
+
+    {
+      "id": 9,
+      "nombre": "Práctica 9 - Mixta 10–12",
+      "ejercicios": [
+        { "operacion": "10x12", "respuesta": 120 },
+        { "operacion": "11x10", "respuesta": 110 },
+        { "operacion": "12x9", "respuesta": 108 },
+        { "operacion": "10x8", "respuesta": 80 },
+        { "operacion": "11x12", "respuesta": 132 },
+        { "operacion": "12x11", "respuesta": 132 },
+        { "operacion": "10x4", "respuesta": 40 },
+        { "operacion": "11x7", "respuesta": 77 },
+        { "operacion": "12x12", "respuesta": 144 },
+        { "operacion": "10x9", "respuesta": 90 },
+        { "operacion": "11x6", "respuesta": 66 },
+        { "operacion": "12x5", "respuesta": 60 },
+        { "operacion": "10x11", "respuesta": 110 },
+        { "operacion": "11x8", "respuesta": 88 },
+        { "operacion": "12x4", "respuesta": 48 }
+      ]
+    },
+
+    {
+      "id": 10,
+      "nombre": "Práctica 10 - Mixta 7–12",
+      "ejercicios": [
+        { "operacion": "7x10", "respuesta": 70 },
+        { "operacion": "8x11", "respuesta": 88 },
+        { "operacion": "9x12", "respuesta": 108 },
+        { "operacion": "10x7", "respuesta": 70 },
+        { "operacion": "11x9", "respuesta": 99 },
+        { "operacion": "12x8", "respuesta": 96 },
+        { "operacion": "7x12", "respuesta": 84 },
+        { "operacion": "8x9", "respuesta": 72 },
+        { "operacion": "9x10", "respuesta": 90 },
+        { "operacion": "10x12", "respuesta": 120 },
+        { "operacion": "11x11", "respuesta": 121 },
+        { "operacion": "12x7", "respuesta": 84 },
+        { "operacion": "9x8", "respuesta": 72 },
+        { "operacion": "10x9", "respuesta": 90 },
+        { "operacion": "11x10", "respuesta": 110 }
+      ]
+    }
+  ]
+}

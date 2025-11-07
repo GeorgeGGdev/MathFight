@@ -7,91 +7,114 @@
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
     <style>
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%);
+        }
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .page-header h1 {
+            font-family: 'Fredoka One';
+            font-size: clamp(36px, 5vw, 56px);
+            color: #0d1630;
+            margin-bottom: 16px;
+            text-shadow: 3px 3px 0 rgba(255,210,63,.3);
+        }
+        .page-header p {
+            font-family: 'Fredoka';
+            font-size: clamp(16px, 2vw, 20px);
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
         .ranking-container {
             max-width: 900px;
-            margin: 40px auto;
-            background: linear-gradient(180deg, #222 0%, #2b2b2b 100%);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            margin: 0 auto 60px;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(13,22,48,.1);
             overflow: hidden;
-            border: 2px solid #3a3d3c;
-            position: relative;
+            border: 3px solid #ffd23f;
         }
         .ranking-header {
-            background: linear-gradient(90deg, #CC2936, #9b1d27);
-            color: #fff;
-            padding: 18px 24px;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            padding: 24px 32px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
         .ranking-header h2 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-        }
-        .ring-strap {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 10px;
-            height: 100%;
-            background: repeating-linear-gradient(180deg, #CC2936 0 18px, #111 18px 36px);
-            opacity: 0.3;
+            font-family: 'Fredoka One';
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
         }
         table.ranking-table {
             width: 100%;
             border-collapse: collapse;
-            color: #eee;
+            color: #0d1630;
         }
         table.ranking-table thead th {
             text-align: left;
-            font-family: 'Fredoka', sans-serif;
+            font-family: 'Fredoka';
             font-weight: 700;
-            color: #ffd24a;
-            background: #3a3d3c;
-            padding: 14px 18px;
-            border-bottom: 2px solid #CC2936;
+            color: #92400e;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 18px 24px;
+            border-bottom: 3px solid #ffd23f;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         table.ranking-table tbody tr {
-            background: #262626;
+            background: white;
+            transition: all 0.3s ease;
         }
         table.ranking-table tbody tr:nth-child(even) {
-            background: #2e2e2e;
+            background: #fafafa;
         }
         table.ranking-table tbody tr:hover {
-            background: #333;
+            background: #fef3c7;
+            transform: scale(1.01);
         }
         table.ranking-table td {
-            padding: 14px 18px;
-            border-bottom: 1px solid #3a3d3c;
-            font-family: 'Fredoka', sans-serif;
+            padding: 18px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            font-family: 'Fredoka';
             vertical-align: middle;
+            font-size: 16px;
         }
         .rank-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             color: #fff;
             font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-family: 'Fredoka One';
+            font-size: 18px;
         }
-        .rank-1 { background: linear-gradient(135deg, #ffd24a, #ffb833); color: #111; }
-        .rank-2 { background: linear-gradient(135deg, #b0b0b0, #9a9a9a); }
-        .rank-3 { background: linear-gradient(135deg, #cd7f32, #b56a1f); }
-        .rank-default { background: #4c4f4e; }
-        .name-cell { font-weight: 600; color: #fff; }
+        .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #78350f; }
+        .rank-2 { background: linear-gradient(135deg, #d1d5db, #9ca3af); color: #1f2937; }
+        .rank-3 { background: linear-gradient(135deg, #fb923c, #f97316); color: #7c2d12; }
+        .rank-default { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; }
+        .name-cell { font-weight: 600; color: #0d1630; font-size: 18px; }
         .medals-cell {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #ffd24a;
+            color: #92400e;
             font-weight: 700;
+            font-size: 18px;
         }
-        .medal-icon { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+        .medal-icon { 
+            filter: drop-shadow(0 2px 4px rgba(251,191,36,0.5)); 
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +133,10 @@
     </nav>
 
     <main class="main-content">
+        <div class="page-header">
+            <h1>🏆 Ranking de Campeones</h1>
+            <p>Los mejores entrenadores de MathFight. ¡Sigue practicando para subir de posición!</p>
+        </div>
         <div class="ranking-container">
             <div class="ranking-header">
                 <span>🥊</span>
@@ -124,37 +151,8 @@
                         <th>Medallas</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="rank-badge rank-1">1</span></td>
-                        <td class="name-cell">Harpix</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 30</td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-badge rank-2">2</span></td>
-                        <td class="name-cell">Jagro</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 23</td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-badge rank-3">3</span></td>
-                        <td class="name-cell">Laze</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 19</td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-badge rank-default">4</span></td>
-                        <td class="name-cell">Tuga</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 17</td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-badge rank-default">5</span></td>
-                        <td class="name-cell">Goldie</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 15</td>
-                    </tr>
-                    <tr>
-                        <td><span class="rank-badge rank-default">6</span></td>
-                        <td class="name-cell">Oli</td>
-                        <td class="medals-cell"><span class="medal-icon">🥇</span> 13</td>
-                    </tr>
+                <tbody id="rankingTableBody">
+                    <!-- Se llenará dinámicamente con JavaScript -->
                 </tbody>
             </table>
         </div>
@@ -170,5 +168,110 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Usuarios ficticios base (entrenadores + usuarios)
+        const baseUsers = [
+            { name: 'Harpix', medals: 100, isCoach: true },
+            { name: 'Jagro', medals: 70, isCoach: true },
+            { name: 'Laze', medals: 50, isCoach: true },
+            { name: 'Tuga', medals: 35, isCoach: true },
+            { name: 'Goldie', medals: 15, isCoach: true },
+            { name: 'Oli', medals: 10, isCoach: true },
+            { name: 'Juan', medals: 5 },
+            { name: 'Katherine', medals: 4 },
+            { name: 'George García', medals: 3 },
+            { name: 'Virginia', medals: 2 },
+            { name: 'Gia', medals: 1 },
+            { name: 'Dari', medals: 0 }
+        ];
+
+        // Función para cargar y mostrar el ranking
+        function loadRanking() {
+            // Obtener el ranking del localStorage
+            let ranking = JSON.parse(localStorage.getItem('mathfight_ranking') || '[]');
+            
+            // Combinar usuarios base con usuarios del localStorage
+            const allUsers = [...baseUsers];
+            
+            // Agregar usuarios del localStorage que no estén en la lista base
+            ranking.forEach(user => {
+                const exists = allUsers.find(u => u.name === user.name);
+                if (!exists) {
+                    allUsers.push(user);
+                }
+            });
+            
+            // Ordenar por medallas (descendente)
+            allUsers.sort((a, b) => b.medals - a.medals);
+            
+            // Obtener el nombre del usuario actual
+            const currentUser = localStorage.getItem('mathfight_username');
+            
+            // Llenar la tabla
+            const tbody = document.getElementById('rankingTableBody');
+            tbody.innerHTML = '';
+            
+            allUsers.forEach((user, index) => {
+                const position = index + 1;
+                const isCurrentUser = user.name === currentUser;
+                const isCoach = user.isCoach || false;
+                
+                const tr = document.createElement('tr');
+                
+                // Estilos especiales
+                if (isCurrentUser) {
+                    tr.style.backgroundColor = '#d1fae5';
+                    tr.style.fontWeight = '700';
+                    tr.style.border = '2px solid #10b981';
+                } else if (isCoach) {
+                    tr.style.backgroundColor = '#fef3c7';
+                    tr.style.fontStyle = 'italic';
+                }
+                
+                // Columna de posición
+                const tdPosition = document.createElement('td');
+                const badge = document.createElement('span');
+                badge.className = 'rank-badge';
+                
+                if (position === 1) {
+                    badge.classList.add('rank-1');
+                } else if (position === 2) {
+                    badge.classList.add('rank-2');
+                } else if (position === 3) {
+                    badge.classList.add('rank-3');
+                } else {
+                    badge.classList.add('rank-default');
+                }
+                
+                badge.textContent = position;
+                tdPosition.appendChild(badge);
+                tr.appendChild(tdPosition);
+                
+                // Columna de nombre
+                const tdName = document.createElement('td');
+                tdName.className = 'name-cell';
+                let nameText = user.name;
+                if (isCurrentUser) {
+                    nameText += ' (Tú) 👤';
+                } else if (isCoach) {
+                    nameText += ' 🐾';
+                }
+                tdName.textContent = nameText;
+                tr.appendChild(tdName);
+                
+                // Columna de medallas
+                const tdMedals = document.createElement('td');
+                tdMedals.className = 'medals-cell';
+                tdMedals.innerHTML = `<span class="medal-icon">🥇</span> ${user.medals}`;
+                tr.appendChild(tdMedals);
+                
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Cargar el ranking al cargar la página
+        document.addEventListener('DOMContentLoaded', loadRanking);
+    </script>
 </body>
 </html>

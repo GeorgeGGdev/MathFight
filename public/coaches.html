@@ -10,21 +10,49 @@
     :root{
         --c-red:#ff3b3b; --c-blue:#2ec5ff; --c-yellow:#ffd23f; --c-mint:#3af2b7; --c-pink:#ff7ac6; --c-ink:#0d1630;
     }
-    body{ background: radial-gradient(1200px 800px at 50% -200px, #eef7ff 0%, #f7fbff 70%, #ffffff 100%); color: var(--c-ink); }
-    .page-wrap{ max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+    body{ 
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%); 
+        color: var(--c-ink); 
+    }
+    .page-wrap{ max-width: 1200px; margin: 0 auto; padding: 60px 20px 80px; }
 
-    .page-title{ font-family: "Fredoka One"; font-size: clamp(28px,4.4vw,48px); margin: 8px 0 6px; background: linear-gradient(90deg,#0a1330,#2a7fff); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .page-sub{ color:#3b4b73; font-family:"Fredoka"; margin-bottom: 18px; }
+    .page-title{ 
+        font-family: "Fredoka One"; 
+        font-size: clamp(36px,5vw,56px); 
+        margin: 0 0 16px; 
+        color: var(--c-ink);
+        text-align: center;
+        text-shadow: 3px 3px 0 rgba(255,210,63,.3);
+    }
+    .page-sub{ 
+        color:#64748b; 
+        font-family:"Fredoka"; 
+        font-size: clamp(16px, 2vw, 20px);
+        margin-bottom: 50px; 
+        text-align: center;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
     .grid{ display: grid; grid-template-columns: 1fr; gap: 22px; }
 
     .coach-card{
-        border-radius: 22px; overflow: hidden; border: 1px solid rgba(13,22,48,.08);
-        box-shadow: 0 18px 44px rgba(13,22,48,.12); background: #fff;
-        transition: transform .25s ease, box-shadow .25s ease; cursor: pointer; position: relative;
-        max-width: 980px; margin: 0 auto; /* carta centrada y grande */
+        border-radius: 32px; 
+        overflow: hidden; 
+        border: 3px solid transparent;
+        box-shadow: 0 10px 30px rgba(13,22,48,.1); 
+        background: white;
+        transition: all .3s ease; 
+        cursor: pointer; 
+        position: relative;
+        max-width: 1000px; 
+        margin: 0 auto 30px;
     }
-    .coach-card:hover{ transform: translateY(-6px); box-shadow: 0 18px 42px rgba(13,22,48,.14); }
+    .coach-card:hover{ 
+        transform: translateY(-8px); 
+        box-shadow: 0 20px 40px rgba(13,22,48,.15); 
+    }
     .coach-head{ display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 18px; padding: 20px; }
     .coach-img{ width: 500px; aspect-ratio: 1/1; object-fit: contain; filter: drop-shadow(0 16px 28px rgba(0,0,0,.14)); }
     .coach-title{ font-family:"Fredoka One"; font-size: clamp(28px,3.6vw,36px); margin: 4px 0 4px; }
@@ -123,12 +151,17 @@
     }
     @media (max-width: 720px){ .acc-grid{ grid-template-columns: 1fr; } .real-img{ max-width: 100%; } }
 
-    /* Acentos laterales por tarjeta */
-    .coach-card.bg-mint{ box-shadow: 0 18px 44px rgba(58,242,183,.16); border-left: 8px solid var(--c-mint); }
-    .coach-card.bg-yellow{ box-shadow: 0 18px 44px rgba(255,210,63,.16); border-left: 8px solid var(--c-yellow); }
-    .coach-card.bg-blue{ box-shadow: 0 18px 44px rgba(46,197,255,.16); border-left: 8px solid var(--c-blue); }
-    .coach-card.bg-pink{ box-shadow: 0 18px 44px rgba(255,122,198,.16); border-left: 8px solid var(--c-pink); }
-    .coach-card.bg-red{ box-shadow: 0 18px 44px rgba(255,59,59,.16); border-left: 8px solid var(--c-red); }
+    /* Acentos por tarjeta */
+    .coach-card.bg-mint{ border-color: var(--c-mint); }
+    .coach-card.bg-mint:hover{ background: linear-gradient(135deg, #f0fdfa, #ccfbf1); }
+    .coach-card.bg-yellow{ border-color: var(--c-yellow); }
+    .coach-card.bg-yellow:hover{ background: linear-gradient(135deg, #fefce8, #fef3c7); }
+    .coach-card.bg-blue{ border-color: var(--c-blue); }
+    .coach-card.bg-blue:hover{ background: linear-gradient(135deg, #f0f9ff, #e0f2fe); }
+    .coach-card.bg-pink{ border-color: var(--c-pink); }
+    .coach-card.bg-pink:hover{ background: linear-gradient(135deg, #fdf2f8, #fce7f3); }
+    .coach-card.bg-red{ border-color: var(--c-red); }
+    .coach-card.bg-red:hover{ background: linear-gradient(135deg, #fff5f5, #ffe4e4); }
 
     /* Indicador desplegable */
     .chev{ position:absolute; right:16px; top:16px; width: 36px; height: 36px; border-radius: 10px; display:grid; place-items:center; font-size:18px; background: rgba(13,22,48,.04); box-shadow: 0 4px 10px rgba(13,22,48,.06); transition: transform .3s ease; }

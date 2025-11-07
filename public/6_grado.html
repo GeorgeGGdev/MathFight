@@ -11,18 +11,23 @@
         --c-red:#ff3b3b; --c-blue:#2ec5ff; --c-yellow:#ffd23f; --c-mint:#3af2b7; --c-pink:#ff7ac6; --c-ink:#0d1630;
         --c-green:#4ade80;
     }
-    body{ background: radial-gradient(1200px 800px at 50% -200px, #eef7ff 0%, #f7fbff 70%, #ffffff 100%); color: var(--c-ink); }
-    .page-wrap{ max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+    body{ 
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%); 
+        color: var(--c-ink); 
+    }
+    .page-wrap{ 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 60px 20px 80px; 
+    }
     
     .page-title{ 
         font-family: "Fredoka One"; 
-        font-size: clamp(28px,4.4vw,48px); 
-        margin: 8px 0 24px; 
-        background: linear-gradient(90deg,#0a1330,#2a7fff); 
-        -webkit-background-clip:text; 
-        background-clip:text; 
-        color:transparent; 
+        font-size: clamp(40px,5vw,60px); 
+        margin: 0 0 50px; 
+        color: var(--c-ink);
         text-align: center;
+        text-shadow: 3px 3px 0 rgba(255,210,63,.3);
     }
     
     .training-section{
@@ -158,24 +163,24 @@
             <div class="training-section">
                 <div class="training-divider divider-green">Empieza con lo básico</div>
                 <div class="training-list">
-                    <button class="training-btn training-btn-green">Entrenamiento 1</button>
-                    <button class="training-btn training-btn-green">Entrenamiento 2</button>
-                    <button class="training-btn training-btn-green">Entrenamiento 3</button>
+                    <button class="training-btn training-btn-green" onclick="startPractice(6, 1)">Entrenamiento 1</button>
+                    <button class="training-btn training-btn-green" onclick="startPractice(6, 2)">Entrenamiento 2</button>
+                    <button class="training-btn training-btn-green" onclick="startPractice(6, 3)">Entrenamiento 3</button>
                 </div>
                 
                 <div class="training-divider divider-yellow">Ponte a prueba</div>
                 <div class="training-list">
-                    <button class="training-btn training-btn-yellow">Entrenamiento 4</button>
-                    <button class="training-btn training-btn-yellow">Entrenamiento 5</button>
-                    <button class="training-btn training-btn-yellow">Entrenamiento 6</button>
+                    <button class="training-btn training-btn-yellow" onclick="startPractice(6, 4)">Entrenamiento 4</button>
+                    <button class="training-btn training-btn-yellow" onclick="startPractice(6, 5)">Entrenamiento 5</button>
+                    <button class="training-btn training-btn-yellow" onclick="startPractice(6, 6)">Entrenamiento 6</button>
                 </div>
                 
                 <div class="training-divider divider-red">Veamos si llegas a ser campeón</div>
                 <div class="training-list">
-                    <button class="training-btn training-btn-red">Entrenamiento 7</button>
-                    <button class="training-btn training-btn-red">Entrenamiento 8</button>
-                    <button class="training-btn training-btn-red">Entrenamiento 9</button>
-                    <button class="training-btn training-btn-red">Entrenamiento 10</button>
+                    <button class="training-btn training-btn-red" onclick="startPractice(6, 7)">Entrenamiento 7</button>
+                    <button class="training-btn training-btn-red" onclick="startPractice(6, 8)">Entrenamiento 8</button>
+                    <button class="training-btn training-btn-red" onclick="startPractice(6, 9)">Entrenamiento 9</button>
+                    <button class="training-btn training-btn-red" onclick="startPractice(6, 10)">Entrenamiento 10</button>
                 </div>
             </div>
         </div>
@@ -227,8 +232,20 @@ document.addEventListener('DOMContentLoaded', () => {
     currentStep++;
 
     if (currentStep < modalSteps.length) {
-      // Cambia a la siguiente imagen
-      modalImage.src = modalSteps[currentStep].image;
+      // Animación de salida
+      modalImage.style.opacity = '0';
+      modalImage.style.transform = 'scale(0.9)';
+      
+      setTimeout(() => {
+        // Cambia a la siguiente imagen
+        modalImage.src = modalSteps[currentStep].image;
+        
+        // Animación de entrada
+        setTimeout(() => {
+          modalImage.style.opacity = '1';
+          modalImage.style.transform = 'scale(1)';
+        }, 50);
+      }, 300);
     } else {
       // Cierra el modal con animación
       modal.style.animation = 'modalFadeOut 0.4s forwards';
@@ -236,6 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Función para iniciar práctica
+function startPractice(grade, practiceId) {
+    window.location.href = `practice.html?grade=${grade}&practice=${practiceId}`;
+}
     </script>
 </body>
 </html>

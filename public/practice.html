@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathFight - Práctica</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Fredoka:wght@300;400;500;600;700&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+    :root{
+        --c-red:#ff3b3b; --c-blue:#2ec5ff; --c-yellow:#ffd23f; --c-mint:#3af2b7; --c-pink:#ff7ac6; --c-ink:#0d1630;
+        --c-green:#4ade80;
+    }
+    body{ 
+        background: radial-gradient(1200px 800px at 50% -200px, #eef7ff 0%, #f7fbff 70%, #ffffff 100%); 
+        color: var(--c-ink); 
+    }
+    
+    .quiz-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 40px;
+        background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.88));
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(13,22,48,.15);
+        border: 2px solid rgba(13,22,48,.08);
+        animation: quizSlideIn 0.8s ease-out;
+    }
+    
+    @keyframes quizSlideIn {
+        0% {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
+    .quiz-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid var(--c-yellow);
+    }
+    
+    .quiz-title {
+        font-family: "Fredoka One";
+        font-size: clamp(28px, 4vw, 40px);
+        margin: 0 0 10px;
+        background: linear-gradient(90deg, #0a1330, #2a7fff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .quiz-progress {
+        font-family: "Fredoka";
+        font-size: 18px;
+        color: #3b4b73;
+        font-weight: 600;
+    }
+    
+    .question-section {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    
+    .question-text {
+        font-family: "Fredoka One";
+        font-size: clamp(48px, 8vw, 72px);
+        color: var(--c-red);
+        margin: 20px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        animation: questionPop 0.6s ease-out;
+    }
+    
+    @keyframes questionPop {
+        0% {
+            opacity: 0;
+            transform: scale(0.5) rotate(-5deg);
+        }
+        50% {
+            transform: scale(1.1) rotate(2deg);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+    
+    .answer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
+    .answer-input {
+        width: 100%;
+        max-width: 300px;
+        padding: 20px 30px;
+        font-family: "Fredoka";
+        font-size: 36px;
+        font-weight: 700;
+        text-align: center;
+        border: 3px solid var(--c-blue);
+        border-radius: 20px;
+        background: white;
+        color: var(--c-ink);
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(46,197,255,.2);
+    }
+    
+    .answer-input:focus {
+        border-color: var(--c-red);
+        box-shadow: 0 12px 30px rgba(255,59,59,.3);
+        transform: scale(1.05);
+    }
+    
+    .answer-input::placeholder {
+        color: #a8b6d9;
+        font-size: 28px;
+    }
+    
+    .submit-button {
+        background: linear-gradient(135deg, var(--c-red), #c50808);
+        color: white;
+        border: none;
+        padding: 18px 50px;
+        border-radius: 20px;
+        font-family: "Fredoka";
+        font-weight: 700;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(255,59,59,.35);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .submit-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+    
+    .submit-button:hover::before {
+        left: 100%;
+    }
+    
+    .submit-button:hover {
+        background: linear-gradient(135deg, #ff5050, #d61a1a);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(255,59,59,.45);
+    }
+    
+    .submit-button:active {
+        transform: translateY(-1px) scale(1.02);
+    }
+    
+    .quiz-info {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+        background: linear-gradient(135deg, rgba(46,197,255,.1), rgba(255,210,63,.1));
+        border-radius: 16px;
+        border: 2px solid rgba(13,22,48,.08);
+    }
+    
+    .info-item {
+        text-align: center;
+    }
+    
+    .info-label {
+        font-family: "Fredoka";
+        font-size: 14px;
+        color: #3b4b73;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+    }
+    
+    .info-value {
+        font-family: "Fredoka One";
+        font-size: 28px;
+        color: var(--c-red);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .quiz-container {
+            margin: 30px 20px;
+            padding: 30px 20px;
+        }
+        
+        .question-text {
+            font-size: 48px;
+        }
+        
+        .answer-input {
+            font-size: 28px;
+            padding: 16px 24px;
+        }
+        
+        .submit-button {
+            padding: 16px 40px;
+            font-size: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="img/logo.png" alt="MathFight" class="brand-logo">
+            </div>
+            <div class="nav-menu">
+                <a class="nav-button" href="index.html">Inicio</a>
+                <a class="nav-button" href="coaches.html">Entrenadores</a>
+                <a class="nav-button" href="ranking.html">Ranking</a>
+                <a class="nav-button" href="legends.html">Leyendas</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h1 class="quiz-title">🥊 Entrenamiento 1</h1>
+                <p class="quiz-progress">Pregunta <span id="currentQuestion">1</span> de <span id="totalQuestions">15</span></p>
+            </div>
+
+            <div class="question-section">
+                <div class="question-text" id="questionText">5 + 3 =</div>
+            </div>
+
+            <div class="answer-section">
+                <input 
+                    type="number" 
+                    class="answer-input" 
+                    id="answerInput" 
+                    placeholder="?" 
+                    autocomplete="off"
+                    autofocus
+                >
+                <button class="submit-button" id="submitButton">Contestar</button>
+            </div>
+
+            <div class="quiz-info">
+                <div class="info-item">
+                    <div class="info-label">Correctas</div>
+                    <div class="info-value" id="correctCount">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Incorrectas</div>
+                    <div class="info-value" id="incorrectCount">0</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Puntos</div>
+                    <div class="info-value" id="scoreCount">0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MathFight. Todos los derechos reservados. · Desarrollado por GeorgeGGdev</p>
+            <div class="footer-links">
+                <a href="coaches.html">Conoce a tus entrenadores</a>
+                <a href="ranking.html">Mira el ranking</a>
+                <a href="index.html">Salir</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let incorrectAnswers = 0;
+        let score = 0;
+        let exercises = [];
+        let grade = 1;
+        let practiceId = 1;
+
+        // Elementos del DOM
+        const questionText = document.getElementById('questionText');
+        const answerInput = document.getElementById('answerInput');
+        const submitButton = document.getElementById('submitButton');
+        const currentQuestionSpan = document.getElementById('currentQuestion');
+        const totalQuestionsSpan = document.getElementById('totalQuestions');
+        const correctCountSpan = document.getElementById('correctCount');
+        const incorrectCountSpan = document.getElementById('incorrectCount');
+        const scoreCountSpan = document.getElementById('scoreCount');
+        const quizTitle = document.querySelector('.quiz-title');
+
+        // Obtener parámetros de la URL
+        function getURLParams() {
+            const params = new URLSearchParams(window.location.search);
+            grade = params.get('grade') || 1;
+            practiceId = params.get('practice') || 1;
+        }
+
+        // Cargar datos del JSON
+        async function loadPracticeData() {
+            try {
+                const response = await fetch(`json/grado${grade}.json`);
+                const data = await response.json();
+                
+                // Manejar diferentes estructuras de JSON
+                let practicas;
+                
+                // Grado 3 tiene estructura anidada: data.grado3.practicas
+                if (data[`grado${grade}`]) {
+                    practicas = data[`grado${grade}`].practicas;
+                } else {
+                    // Grados 1, 2, 4, 5, 6 tienen: data.practicas
+                    practicas = data.practicas;
+                }
+                
+                // Buscar la práctica específica por ID
+                const practice = practicas.find(p => p.id === parseInt(practiceId));
+                
+                // Obtener los ejercicios (puede ser "ejercicios" o "preguntas")
+                const exerciseData = practice?.ejercicios || practice?.preguntas;
+                
+                if (practice && exerciseData && exerciseData.length > 0) {
+                    // Normalizar los ejercicios según el formato del JSON
+                    exercises = exerciseData.map(ej => {
+                        // Detectar el formato y normalizar
+                        let pregunta, respuesta;
+                        
+                        if (ej.pregunta !== undefined) {
+                            // Formato: { pregunta: "...", respuesta: ... }
+                            pregunta = ej.pregunta;
+                            respuesta = ej.respuesta;
+                        } else if (ej.p !== undefined) {
+                            // Formato: { p: "...", r: ... }
+                            pregunta = ej.p + ' =';
+                            respuesta = ej.r;
+                        } else if (ej.operacion !== undefined) {
+                            // Formato: { operacion: "5x3", respuesta: ... }
+                            pregunta = ej.operacion.replace('x', ' × ') + ' =';
+                            respuesta = ej.respuesta;
+                        }
+                        
+                        return { pregunta, respuesta };
+                    });
+                    
+                    totalQuestionsSpan.textContent = exercises.length;
+                    quizTitle.innerHTML = `🥊 Entrenamiento ${practiceId}`;
+                    showQuestion();
+                } else {
+                    console.error('Práctica no encontrada o sin ejercicios');
+                    questionText.innerHTML = `
+                        <div style="font-size: 24px; color: #ef4444; text-align: center; padding: 40px;">
+                            ⚠️ Esta práctica aún no está disponible<br>
+                            <span style="font-size: 18px; color: #3b4b73; margin-top: 20px; display: block;">
+                                Por favor, selecciona otra práctica
+                            </span>
+                        </div>
+                    `;
+                    answerInput.style.display = 'none';
+                    submitButton.style.display = 'none';
+                    
+                    // Agregar botón para volver
+                    setTimeout(() => {
+                        const backBtn = document.createElement('button');
+                        backBtn.className = 'submit-button';
+                        backBtn.textContent = 'Volver';
+                        backBtn.style.display = 'inline-block';
+                        backBtn.onclick = () => window.location.href = `${grade}_grado.html`;
+                        document.querySelector('.answer-section').appendChild(backBtn);
+                    }, 100);
+                }
+            } catch (error) {
+                console.error('Error al cargar los datos:', error);
+                questionText.textContent = 'Error al cargar la práctica';
+            }
+        }
+
+        // Mostrar pregunta actual
+        function showQuestion() {
+            if (currentQuestionIndex < exercises.length) {
+                const exercise = exercises[currentQuestionIndex];
+                questionText.textContent = exercise.pregunta;
+                currentQuestionSpan.textContent = currentQuestionIndex + 1;
+                answerInput.value = '';
+                answerInput.focus();
+                
+                // Animación de entrada
+                questionText.style.animation = 'none';
+                setTimeout(() => {
+                    questionText.style.animation = 'questionPop 0.6s ease-out';
+                }, 10);
+            } else {
+                showResults();
+            }
+        }
+
+        // Verificar respuesta
+        function checkAnswer() {
+            const userAnswer = parseInt(answerInput.value);
+            const correctAnswer = exercises[currentQuestionIndex].respuesta;
+
+            if (isNaN(userAnswer)) {
+                answerInput.style.borderColor = '#ff9800';
+                setTimeout(() => {
+                    answerInput.style.borderColor = 'var(--c-blue)';
+                }, 500);
+                return;
+            }
+
+            if (userAnswer === correctAnswer) {
+                correctAnswers++;
+                score += 10;
+                correctCountSpan.textContent = correctAnswers;
+                scoreCountSpan.textContent = score;
+                
+                // Feedback visual positivo
+                answerInput.style.borderColor = '#4ade80';
+                answerInput.style.backgroundColor = '#d1fae5';
+            } else {
+                incorrectAnswers++;
+                incorrectCountSpan.textContent = incorrectAnswers;
+                
+                // Feedback visual negativo
+                answerInput.style.borderColor = '#ef4444';
+                answerInput.style.backgroundColor = '#fee2e2';
+            }
+
+            // Pasar a la siguiente pregunta después de un breve delay
+            setTimeout(() => {
+                answerInput.style.borderColor = 'var(--c-blue)';
+                answerInput.style.backgroundColor = 'white';
+                currentQuestionIndex++;
+                showQuestion();
+            }, 800);
+        }
+
+        // Mostrar resultados finales
+        function showResults() {
+            const percentage = Math.round((correctAnswers / exercises.length) * 100);
+            
+            // Otorgar medallas según el desempeño
+            let medalsEarned = 0;
+            if (percentage >= 90) {
+                medalsEarned = 3;
+            } else if (percentage >= 70) {
+                medalsEarned = 2;
+            } else if (percentage >= 50) {
+                medalsEarned = 1;
+            }
+            
+            // Actualizar medallas del usuario en el ranking
+            if (medalsEarned > 0) {
+                const userName = localStorage.getItem('mathfight_username');
+                if (userName) {
+                    let ranking = JSON.parse(localStorage.getItem('mathfight_ranking') || '[]');
+                    const userIndex = ranking.findIndex(u => u.name === userName);
+                    
+                    if (userIndex !== -1) {
+                        ranking[userIndex].medals += medalsEarned;
+                    } else {
+                        ranking.push({ name: userName, medals: medalsEarned });
+                    }
+                    
+                    localStorage.setItem('mathfight_ranking', JSON.stringify(ranking));
+                }
+            }
+            
+            questionText.innerHTML = `¡Entrenamiento Completado!`;
+            answerInput.style.display = 'none';
+            submitButton.style.display = 'none';
+
+            const resultsHTML = `
+                <div style="text-align: center; margin-top: 30px;">
+                    <div style="font-family: 'Fredoka One'; font-size: 48px; color: ${percentage >= 70 ? '#4ade80' : '#ef4444'}; margin-bottom: 20px;">
+                        ${percentage}%
+                    </div>
+                    <div style="font-family: 'Fredoka'; font-size: 24px; color: #3b4b73; margin-bottom: 15px;">
+                        ${percentage >= 90 ? '¡Excelente trabajo! 🏆' : 
+                          percentage >= 70 ? '¡Buen trabajo! 👍' : 
+                          percentage >= 50 ? 'Sigue practicando 💪' : 
+                          'Necesitas más práctica 📚'}
+                    </div>
+                    ${medalsEarned > 0 ? `
+                        <div style="font-family: 'Fredoka One'; font-size: 28px; color: #ffd23f; margin-bottom: 20px; animation: pulseGlow 2s ease-in-out infinite;">
+                            🥇 +${medalsEarned} ${medalsEarned === 1 ? 'Medalla' : 'Medallas'}
+                        </div>
+                    ` : `
+                        <div style="font-family: 'Fredoka'; font-size: 18px; color: #6b7280; margin-bottom: 20px;">
+                            Necesitas al menos 50% para ganar medallas
+                        </div>
+                    `}
+                    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px;">
+                        <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 20px; border-radius: 16px; border: 2px solid #4ade80;">
+                            <div style="font-family: 'Fredoka'; font-size: 14px; color: #065f46; margin-bottom: 5px;">CORRECTAS</div>
+                            <div style="font-family: 'Fredoka One'; font-size: 36px; color: #065f46;">${correctAnswers}</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fee2e2, #fecaca); padding: 20px; border-radius: 16px; border: 2px solid #ef4444;">
+                            <div style="font-family: 'Fredoka'; font-size: 14px; color: #991b1b; margin-bottom: 5px;">INCORRECTAS</div>
+                            <div style="font-family: 'Fredoka One'; font-size: 36px; color: #991b1b;">${incorrectAnswers}</div>
+                        </div>
+                    </div>
+                    <button onclick="window.location.href='${grade}_grado.html'" style="background: linear-gradient(135deg, var(--c-blue), #1ea6d8); color: white; border: none; padding: 18px 40px; border-radius: 20px; font-family: 'Fredoka'; font-weight: 700; font-size: 20px; cursor: pointer; box-shadow: 0 8px 20px rgba(46,197,255,.35); margin-right: 10px;">
+                        Volver a Entrenamientos
+                    </button>
+                    <button onclick="window.location.reload()" style="background: linear-gradient(135deg, var(--c-yellow), #eab308); color: #713f12; border: none; padding: 18px 40px; border-radius: 20px; font-family: 'Fredoka'; font-weight: 700; font-size: 20px; cursor: pointer; box-shadow: 0 8px 20px rgba(250,204,21,.35);">
+                        Reintentar
+                    </button>
+                </div>
+            `;
+
+            document.querySelector('.answer-section').innerHTML = resultsHTML;
+        }
+
+        // Event Listeners
+        submitButton.addEventListener('click', checkAnswer);
+
+        answerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+
+        // Inicializar
+        getURLParams();
+        loadPracticeData();
+    </script>
+</body>
+</html>
